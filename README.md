@@ -138,5 +138,3 @@ _Deletes a counter._
 Good luck! 🎉
 
 We hope your submission is… to die for.
-
-![Coffin dance](coffin.gif)
