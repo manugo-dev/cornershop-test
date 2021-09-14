@@ -23,6 +23,7 @@ The application consists of several screens where each screen has one or multipl
 We have provided starter boilerplate so you can write your application without any hassle and also a NodeJS dummy backend with all the neccessary endpoints to persist the data.
 
 We've also provided a few UI components and basic styling rules so you can focus solely on implementing the screens the best you can. Here's a list of all the things included:
+
 - Alert
 - Button
 - Icons
@@ -45,7 +46,7 @@ Your submission will be evaluated considering the following criterias:
 - Faithful implementation of the challenge.
   - Follow the design spec as close as you can.
 - Good architecture and software design.
-  - _Hint:_ Usage of design patterns, good code organization, separation of concerns, etc. 
+  - _Hint:_ Usage of design patterns, good code organization, separation of concerns, etc.
 - Use of best practices when writing code.
   - _Hint:_ Idiomatic & readable code, good use of composition, DRY, etc.
 - The application must persist data back to the server.
@@ -56,6 +57,7 @@ Your submission will be evaluated considering the following criterias:
 - **Last but not least**, we would love to understand your thought process, so writing a little summary of your choices, what you did and how you solved the test is required (write it here on this README file).
 
 Other things to consider:
+
 - For styling you can use whatever CSS flavor you want: plane old CSS, SASS, LESS, CSS-in-JS, CSS modules, everything is allowed.
 - Please consider that we expect your solution to be production-ready. In other words, that millions of users would be thrilled to use your product.
 - You can use whatever dependencies/libraries you want, the only requirement dependency-wise is to use React
@@ -85,9 +87,10 @@ Since the backend API runs locally on a different port (`3001`) than the `react-
 #### **GET** `/api/v1/counter`.
 
 _Fetch a list of counters._
+
 ```javascript
 /* Response */
-[]
+[];
 ```
 
 #### **POST** `/api/v1/counter`.
@@ -103,7 +106,9 @@ _Adds a counter._
 ```
 
 #### **POST** `/api/v1/counter/inc`
+
 _Increments the value of a counter._
+
 ```javascript
 /* Body */
 { id: "asdf" }
@@ -113,6 +118,7 @@ _Increments the value of a counter._
 ```
 
 #### **POST** `/api/v1/counter/dec`
+
 _Decrements the value of a counter._
 
 ```javascript
@@ -124,17 +130,28 @@ _Decrements the value of a counter._
 ```
 
 #### **DELETE** `/api/v1/counter`
+
 _Deletes a counter._
 
 ```javascript
 /* Body */
-{ id: "qwer" }
+{
+  id: 'qwer';
+}
 
 /* Response */
-"qwer" // The id of the deleted counter
+('qwer'); // The id of the deleted counter
 ```
+
 ---
 
 Good luck! 🎉
 
 We hope your submission is… to die for.
+
+## Personal notes
+
+- I found a project initialized with CRA that doesn't have a very well defined folder structure.
+- In the current state of the project, I feel that it is pertinent to be able to make all the necessary changes to guarantee the readability of the code and good practices, such as adopting the use of eslint, prettier and stylelint.
+- I prefer the use of SASS since it allows a cleaner code, so the components will be progressively migrated as time allows.
+- In the same way, it is the best moment of the project to adopt the use of typescript, which would benefit by allowing type checking and a more comfortable use with IntelliSense.
