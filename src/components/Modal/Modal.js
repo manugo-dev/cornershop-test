@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Transition from 'react-transition-group/Transition';
@@ -7,7 +8,7 @@ import './Modal.css';
 const TRANSITION_TIMEOUT = 295; // ms
 
 const Modal = ({ children, className = '', isVisible, onClose, onOpen, ...rest }) => {
-  const modalContentRef = React.useRef();
+  const modalContentRef = useRef();
 
   const handleEntered = () => {
     modalContentRef.current.focus();

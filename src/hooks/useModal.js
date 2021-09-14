@@ -1,11 +1,13 @@
-export const useModal = () => {
-  const [isVisible, setIsVisible] = React.useState(() => false);
+import { useState, useCallback } from 'react';
 
-  const hideModal = React.useCallback(() => {
+export const useModal = () => {
+  const [isVisible, setIsVisible] = useState(() => false);
+
+  const hideModal = useCallback(() => {
     setIsVisible(false);
   }, []);
 
-  const showModal = React.useCallback(() => {
+  const showModal = useCallback(() => {
     setIsVisible(true);
   }, []);
 

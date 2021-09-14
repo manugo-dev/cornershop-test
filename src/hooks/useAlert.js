@@ -1,11 +1,13 @@
-export const useAlert = () => {
-  const [isVisible, setIsVisible] = React.useState(() => false);
+import { useState, useCallback } from 'react';
 
-  const hideAlert = React.useCallback(() => {
+export const useAlert = () => {
+  const [isVisible, setIsVisible] = useState(() => false);
+
+  const hideAlert = useCallback(() => {
     setIsVisible(false);
   }, []);
 
-  const showAlert = React.useCallback(() => {
+  const showAlert = useCallback(() => {
     setIsVisible(true);
   }, []);
 
