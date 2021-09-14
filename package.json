@@ -11,10 +11,12 @@
   "author": "Cornershop",
   "license": "ISC",
   "dependencies": {
+    "apisauce": "^2.1.1",
     "body-parser": "^1.19.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "i18next": "^20.6.1",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",

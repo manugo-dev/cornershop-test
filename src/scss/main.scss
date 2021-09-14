@@ -1,5 +1,13 @@
 @import 'colors';
 
+@import 'layout';
+
+@import 'margins';
+
+@import 'typography';
+
+@import 'fonts/AvenirNext';
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +18,7 @@ body {
   color: var(--dark-black);
   font-family: var(--main-font);
   font-size: 17px;
+  font-weight: 400;
   line-height: var(--line-height);
 }
 
