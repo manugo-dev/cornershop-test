@@ -11,7 +11,7 @@ import {
   SearchIcon,
   TrashBinIcon
 } from 'components/Icons';
-import { Button } from 'components/Button';
+import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
 import { Alert } from 'components/Alert';
 import { Modal } from 'components/Modal';
 import { useAlert } from 'hooks/useAlert';
@@ -82,26 +82,26 @@ function Cookbook() {
         <h3>Buttons</h3>
         <p>Color variants</p>
         <Button>Main</Button>
-        <Button color="danger">Danger</Button>
-        <Button color="white">White</Button>
+        <Button color={ButtonColor.DANGER}>Danger</Button>
+        <Button color={ButtonColor.WHITE}>White</Button>
         <hr />
 
         <p>Size variants</p>
         <Button>Regular</Button>
-        <Button size="big">Big</Button>
+        <Button size={ButtonSize.BIG}>Big</Button>
         <hr />
 
         <p>Kind variants</p>
-        <Button kind="flat">Flat</Button>
+        <Button kind={ButtonKind.FLAT}>Flat</Button>
         <Button>Regular</Button>
-        <Button kind="raised">Raised</Button>
+        <Button kind={ButtonKind.RAISED}>Raised</Button>
 
         <p>With icons</p>
         <div style={{ display: 'flex' }}>
           <Button>
             <NewIcon fill="var(--white)" />
           </Button>
-          <Button color="white">
+          <Button color={ButtonColor.WHITE}>
             <OpenIcon fill="var(--dark-black)" />
           </Button>
         </div>
@@ -120,10 +120,10 @@ function Cookbook() {
           <Alert.Title>Alert title</Alert.Title>
           <Alert.Message>Alert message</Alert.Message>
           <Alert.Actions>
-            <Button kind="raised" onClick={hideAlert}>
+            <Button kind={ButtonKind.RAISED} onClick={hideAlert}>
               Action
             </Button>
-            <Button kind="raised" color="danger" onClick={hideAlert}>
+            <Button kind={ButtonKind.RAISED} color={ButtonColor.DANGER} onClick={hideAlert}>
               Error
             </Button>
           </Alert.Actions>

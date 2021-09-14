@@ -3,53 +3,56 @@ import { HTMLProps } from 'react';
 
 import styles from './styles.module.css';
 
-const ButtonSizeVariant = {
-  regular: 'regular',
-  big: 'big'
-};
-const ButtonKindVariant = {
-  regular: 'regular',
-  flat: 'flat',
-  raised: 'raised'
-};
-const ButtonColorVariant = {
-  regular: 'regular',
-  danger: 'danger',
-  white: 'white'
-};
+export enum ButtonSize {
+  REGULAR,
+  BIG
+}
+export enum ButtonKind {
+  REGULAR = 'regular',
+  FLAT = 'flat',
+  RAISED = 'raised'
+}
+export enum ButtonColor {
+  REGULAR = 'regular',
+  DANGER = 'danger',
+  WHITE = 'white'
+}
 
 const ButtonSizeClasses = {
-  [ButtonSizeVariant.regular]: '',
-  [ButtonSizeVariant.big]: styles['cs-button--big']
+  [ButtonSize.REGULAR]: '',
+  [ButtonSize.BIG]: styles['cs-button--big']
 };
 const ButtonKindClasses = {
-  [ButtonKindVariant.regular]: '',
-  [ButtonKindVariant.flat]: styles['cs-button--flat'],
-  [ButtonKindVariant.raised]: styles['cs-button--raised']
+  [ButtonKind.REGULAR]: '',
+  [ButtonKind.FLAT]: styles['cs-button--flat'],
+  [ButtonKind.RAISED]: styles['cs-button--raised']
 };
 const ButtonColorClasses = {
-  [ButtonColorVariant.regular]: '',
-  [ButtonColorVariant.danger]: styles['cs-button--danger'],
-  [ButtonColorVariant.white]: styles['cs-button--white']
+  [ButtonColor.REGULAR]: '',
+  [ButtonColor.DANGER]: styles['cs-button--danger'],
+  [ButtonColor.WHITE]: styles['cs-button--white']
 };
 
-type ButtonType = JSX.IntrinsicElements['button']['type'];
+export type ButtonType = JSX.IntrinsicElements['button']['type'];
 
 interface Props extends HTMLProps<HTMLButtonElement> {
-  type: ButtonType;
+  type?: ButtonType;
+  color?: ButtonColor;
+  kind?: ButtonKind;
+  size?: ButtonSize;
 }
 
 function Button({
   type,
   children,
   className = '',
-  color = ButtonColorVariant.regular,
-  kind = ButtonKindVariant.regular,
-  size = ButtonSizeVariant.regular,
+  color = ButtonColor.REGULAR,
+  kind = ButtonKind.REGULAR,
+  size = ButtonSize.REGULAR,
   ...rest
 }: Props) {
   const classes = classnames(
-    'cs-button',
+    styles['cs-button'],
     ButtonColorClasses[color],
     ButtonKindClasses[kind],
     ButtonSizeClasses[size],
@@ -57,7 +60,7 @@ function Button({
   );
 
   return (
-    <button type={type} className={classes} {...rest}>
+    <button type={type === 'submit' ? 'submit' : 'button'} className={classes} {...rest}>
       <span>{children}</span>
     </button>
   );

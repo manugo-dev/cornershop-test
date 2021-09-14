@@ -1,8 +1,22 @@
+$font-regular: 17px;
 $font-big: 24px;
 
+$regular: 400;
 $bold: 600;
 
 .title {
   font-size: $font-big;
   font-weight: $bold;
+}
+
+.text {
+  font-size: $font-regular;
+  font-weight: $regular;
+}
+
+.title,
+.text {
+  &.center {
+    text-align: center;
+  }
 }

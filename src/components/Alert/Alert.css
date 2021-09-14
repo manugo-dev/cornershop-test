@@ -1,39 +1,39 @@
 .cs-alert {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
   align-items: center;
+  bottom: 0;
+  display: flex;
   justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
   z-index: 1;
 }
 
 .cs-alert__backdrop {
+  background-color: var(--alpha-05);
+  height: 100%;
   position: absolute;
   width: 100%;
-  height: 100%;
-  background-color: var(--alpha-05);
 }
 
 .cs-alert__content {
-  width: 100%;
-  max-width: 312px;
-  padding: 20px 15px;
   background-color: var(--white);
   border-radius: var(--with-radius--large);
   box-shadow: var(--with-shadow--alert);
+  max-width: 312px;
+  padding: 20px 15px;
   text-align: center;
+  width: 100%;
   z-index: 1;
 }
 
 .cs-alert__actions {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin: auto;
   margin-top: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .cs-alert__actions > .cs-button + .cs-button {
@@ -41,25 +41,28 @@
 }
 
 .cs-alert__message {
-  margin: 6px auto;
   color: var(--black);
+  margin: 6px auto;
 }
+
 .cs-alert__title {
-  margin: auto;
+  color: var(--dark-black);
   font-size: 22px;
   font-weight: 600;
-  color: var(--dark-black);
+  margin: auto;
 }
 
 /* Slide */
 .cs-alert-slide-transition {
   transition: transform 195ms ease-in-out, opacity 195ms ease-in-out;
 }
+
 .cs-alert-slide-exited,
 .cs-alert-slide-entering,
 .cs-alert-slide-exiting {
   opacity: 0;
 }
+
 .cs-alert-slide-entered {
   opacity: 1;
 }
@@ -67,6 +70,7 @@
 .cs-alert-slide-entering {
   transform: translateY(-66px) scale(0.95);
 }
+
 .cs-alert-slide-exited,
 .cs-alert-slide-exiting {
   transform: translateY(66px) scale(0.95);
