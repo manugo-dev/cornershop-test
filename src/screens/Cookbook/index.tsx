@@ -35,7 +35,7 @@ function Cookbook() {
         <h2>Here you have some components to use</h2>
       </hgroup>
       <p>
-        You can build other components –like a searchbar, wink wink– using the components we've provided you.
+        You can build other components –like a searchbar, wink wink– using the components weve provided you.
       </p>
       <p>Of course you can create more Components if you need them. Have fun and good luck!</p>
 
@@ -141,7 +141,7 @@ function Cookbook() {
           onOpen={() => console.log('Modal was opened')}
         >
           <Modal.Header>
-            <Modal.Title>I'm a helpless modal</Modal.Title>
+            <Modal.Title>Im a helpless modal</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Button onClick={hideModal}>Hide Modal</Button>

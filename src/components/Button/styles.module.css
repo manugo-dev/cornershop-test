@@ -1,61 +1,60 @@
 .cs-button {
-  height: 40px;
-  padding: 8px 24px;
-  position: relative;
-  display: inline-block;
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  
   background-color: var(--app-tint);
   border: var(--with-border);
   border-radius: var(--with-radius);
   box-shadow: var(--with-shadow);
   color: var(--white);
   cursor: pointer;
+  display: inline-block;
+  display: inline-flex;
   font-size: inherit;
+  height: 40px;
+  justify-content: center;
+  padding: 8px 24px;
+  position: relative;
   transition: 195ms box-shadow ease-in;
 }
+
 .cs-button::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
-  left: -1px;
   border-radius: inherit;
+  bottom: -1px;
+  content: '';
+  left: -1px;
   pointer-events: none;
-  z-index: 0;
+  position: absolute;
+  right: -1px;
+  top: -1px;
   transition: 195ms background-color ease-in;
+  z-index: 0;
 }
-.cs-button:not(.cs-button--flat):hover {
-  box-shadow: var(--with-shadow--hover);
-}
-.cs-button--raised:hover {
-  box-shadow: var(--with-shadow--raised--hover);
-}
+
 .cs-button:hover::before {
   background-color: var(--alpha-005);
 }
 
 .cs-button > span {
-  z-index: 1;
-  position: relative;
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .cs-button:disabled,
 .cs-button[disabled] {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cs-button:not(.cs-button--flat):hover {
+  box-shadow: var(--with-shadow--hover);
 }
 
 /* Size */
 .cs-button--big {
-  padding: 12px 18px;
   height: 48px;
+  padding: 12px 18px;
 }
 
 /* Kind */
@@ -63,10 +62,16 @@
   border-color: transparent;
   box-shadow: var(--with-shadow--raised);
 }
+
+.cs-button--raised:hover {
+  box-shadow: var(--with-shadow--raised--hover);
+}
+
 .cs-button--flat {
   border-color: transparent;
   box-shadow: none;
 }
+
 .cs-button--flat.cs-button--white,
 .cs-button--raised.cs-button--white {
   color: var(--app-tint);
@@ -77,6 +82,7 @@
   background-color: var(--white);
   color: var(--destructive-red);
 }
+
 .cs-button--white {
   background-color: var(--white);
   color: var(--black);

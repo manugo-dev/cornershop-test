@@ -1,11 +1,7 @@
 @import 'colors';
-
 @import 'layout';
-
 @import 'margins';
-
 @import 'typography';
-
 @import 'fonts/AvenirNext';
 
 * {
@@ -33,8 +29,7 @@ h6 {
 
 input,
 select,
-textarea,
-select {
+textarea {
   font-family: var(--main-font);
 }
 
@@ -42,11 +37,13 @@ select {
 .cs-fade-transition {
   transition: opacity 195ms ease-in-out;
 }
+
 .cs-fade-exited,
 .cs-fade-exiting,
 .cs-fade-entering {
   opacity: 0;
 }
+
 .cs-fade-entered {
   opacity: 1;
 }
