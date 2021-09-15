@@ -5,3 +5,7 @@ i18next.addResources('en', 'Welcome', {
   description: 'Capture cups of lattes, frapuccinos, or anything else that can be counted.',
   getStarted: 'Get started'
 });
+
+i18next.addResources('en', 'Counters', {
+  searchCounters: 'Search Counters'
+});

@@ -1,3 +1,8 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .input {
   appearance: none;
   background-color: var(--white);
@@ -15,4 +20,21 @@
     outline: 2px solid var(--app-tint);
     outline-style: auto;
   }
+
+  &::placeholder {
+    color: var(--gray);
+    font-size: 16px;
+  }
+}
+
+.with-icon {
+  padding-left: 55px;
+}
+
+.icon {
+  left: 22px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
 }
