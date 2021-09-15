@@ -5,7 +5,7 @@ export enum StatusCodes {
 }
 
 const api = create({
-  baseURL: process.env.API_BASE_URL || ''
+  baseURL: process.env.REACT_APP_API_BASE_URL || ''
 });
 
 export default api;
