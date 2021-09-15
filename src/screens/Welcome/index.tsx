@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -7,15 +8,15 @@ import paths from 'components/App/paths';
 import styles from './styles.module.scss';
 
 function Welcome() {
+  const { t } = useTranslation('Welcome');
+
   return (
     <div className={cn('column middle center m-top-15', styles.page)}>
       <Logo className="m-bottom-5" />
-      <h1 className="title">Welcome to Counters</h1>
-      <p className="text center m-bottom-15">
-        Capture cups of lattes, frapuccinos, or anything else that can be counted.
-      </p>
+      <h1 className="title">{t('title')}</h1>
+      <p className="text center m-bottom-15">{t('description')}</p>
       <Link className="button" to={paths.counters}>
-        Get started
+        {t('getStarted')}
       </Link>
     </div>
   );
