@@ -14,8 +14,8 @@ import {
 import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
 import { Alert } from 'components/Alert';
 import { Modal } from 'components/Modal';
-import { useAlert } from 'hooks/useAlert';
-import { useModal } from 'hooks/useModal';
+import useAlert from 'hooks/useAlert';
+import useModal from 'hooks/useModal';
 
 // You don't have to use `fetch` btw, use whatever you want
 const getCounters = () => fetch('/api/v1/counter', { method: 'get' }).then((res) => res.json());
@@ -25,6 +25,7 @@ function Cookbook() {
   const { isVisible: isModalVisible, hideModal, showModal } = useModal();
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     getCounters().then(console.log, console.error);
   }, []);
 
@@ -114,7 +115,9 @@ function Cookbook() {
 
         <Alert
           isVisible={isAlertVisible}
+          // eslint-disable-next-line no-console
           onClose={() => console.log('Alert was closed')}
+          // eslint-disable-next-line no-console
           onOpen={() => console.log('Alert was opened')}
         >
           <Alert.Title>Alert title</Alert.Title>
@@ -137,7 +140,9 @@ function Cookbook() {
 
         <Modal
           isVisible={isModalVisible}
+          // eslint-disable-next-line no-console
           onClose={() => console.log('Modal was closed')}
+          // eslint-disable-next-line no-console
           onOpen={() => console.log('Modal was opened')}
         >
           <Modal.Header>

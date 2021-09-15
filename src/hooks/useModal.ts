@@ -1,19 +1,21 @@
 import { useState, useCallback } from 'react';
 
-export const useAlert = () => {
+const useModal = () => {
   const [isVisible, setIsVisible] = useState(() => false);
 
-  const hideAlert = useCallback(() => {
+  const hideModal = useCallback(() => {
     setIsVisible(false);
   }, []);
 
-  const showAlert = useCallback(() => {
+  const showModal = useCallback(() => {
     setIsVisible(true);
   }, []);
 
   return {
     isVisible,
-    hideAlert,
-    showAlert
+    hideModal,
+    showModal
   };
 };
+
+export default useModal;
