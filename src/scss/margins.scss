@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern  */
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
@@ -93,4 +92,18 @@ $max-left: 50;
 
 .m-left-0 {
   margin-left: 0;
+}
+
+.m-h-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.m-v-auto {
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+.m-auto {
+  margin: auto;
 }

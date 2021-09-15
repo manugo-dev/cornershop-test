@@ -2,6 +2,8 @@
   "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
   "plugins": ["stylelint-order"],
   "rules": {
-    "order/order": ["custom-properties", "declarations"]
+    "order/order": ["custom-properties", "declarations"],
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null
   }
 }

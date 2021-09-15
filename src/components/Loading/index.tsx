@@ -1,8 +1,14 @@
+import cn from 'classnames';
+
 import styles from './styles.module.scss';
 
-function Loading() {
+interface Props {
+  className?: string;
+}
+
+function Loading({ className = '' }: Props) {
   return (
-    <div className={styles.spinner}>
+    <div className={cn(styles.spinner, className)}>
       <div className={styles.bouncer} />
       <div className={styles.bouncer} />
       <div className={styles.bouncer} />

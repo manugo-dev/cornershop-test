@@ -5,7 +5,7 @@ import ROUTES from './routes';
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading className="m-h-auto m-top-15" />}>
       <Router>
         <Switch>
           {ROUTES.map((route) => (
