@@ -3,9 +3,9 @@ import styles from './styles.module.scss';
 function Loading() {
   return (
     <div className={styles.spinner}>
-      <div className={styles.spinnerBouncer} />
-      <div className={styles.spinnerBouncer} />
-      <div className={styles.spinnerBouncer} />
+      <div className={styles.bouncer} />
+      <div className={styles.bouncer} />
+      <div className={styles.bouncer} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLHeadingElement> {
 }
 
 function AlertTitle({ children, className = '', ...rest }: Props) {
-  const classes = cn(styles.alertTitle, className);
+  const classes = cn(styles.title, className);
 
   return (
     <h2 className={classes} id="alert-title" {...rest}>

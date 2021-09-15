@@ -49,41 +49,41 @@
   &:not(.flat):hover {
     box-shadow: var(--with-shadow--hover);
   }
+}
 
-  /* Size */
-  .big {
-    height: 48px;
-    padding: 12px 18px;
-  }
+/* Size */
+.big {
+  height: 48px;
+  padding: 12px 18px;
+}
 
-  /* Kind */
-  .raised {
-    border-color: transparent;
-    box-shadow: var(--with-shadow--raised);
-  }
+/* Kind */
+.raised {
+  border-color: transparent;
+  box-shadow: var(--with-shadow--raised);
+}
 
-  .raised:hover {
-    box-shadow: var(--with-shadow--raised--hover);
-  }
+.raised:hover {
+  box-shadow: var(--with-shadow--raised--hover);
+}
 
-  .flat {
-    border-color: transparent;
-    box-shadow: none;
-  }
+.flat {
+  border-color: transparent;
+  box-shadow: none;
+}
 
-  .flat.white,
-  .raised.white {
-    color: var(--app-tint);
-  }
+.flat.white,
+.raised.white {
+  color: var(--app-tint);
+}
 
-  /* Color */
-  .danger {
-    background-color: var(--white);
-    color: var(--destructive-red);
-  }
+/* Color */
+.danger {
+  background-color: var(--white);
+  color: var(--destructive-red);
+}
 
-  .white {
-    background-color: var(--white);
-    color: var(--black);
-  }
+.white {
+  background-color: var(--white);
+  color: var(--black);
 }

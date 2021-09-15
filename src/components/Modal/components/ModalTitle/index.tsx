@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLHeadingElement> {
 }
 
 function ModalTitle({ children, className = '', ...rest }: Props) {
-  const classes = cn(styles.modalTitle, className);
+  const classes = cn(styles.title, className);
 
   return (
     <h2 className={classes} id="modal-title" {...rest}>

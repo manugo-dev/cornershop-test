@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLParagraphElement> {
 }
 
 function AlertMessage({ children, className = '', ...rest }: Props) {
-  const classes = cn(styles.alertMessage, className);
+  const classes = cn(styles.message, className);
 
   return (
     <p className={classes} {...rest}>

@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 }
 
 function AlertActions({ children, className = '', ...rest }: Props) {
-  const classes = cn(styles.alertActions, className);
+  const classes = cn(styles.actions, className);
 
   return (
     <div className={classes} {...rest}>

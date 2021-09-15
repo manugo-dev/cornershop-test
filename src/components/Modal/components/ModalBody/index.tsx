@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 }
 
 function ModalBody({ children, className = '', ...rest }: Props) {
-  const classes = cn(styles.modalBody, className);
+  const classes = cn(styles.body, className);
 
   return (
     <section className={classes} {...rest}>

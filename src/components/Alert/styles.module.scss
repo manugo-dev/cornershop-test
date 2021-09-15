@@ -10,14 +10,14 @@
   z-index: 1;
 }
 
-.alert-backdrop {
+.backdrop {
   background-color: var(--alpha-05);
   height: 100%;
   position: absolute;
   width: 100%;
 }
 
-.alert-content {
+.content {
   background-color: var(--white);
   border-radius: var(--with-radius--large);
   box-shadow: var(--with-shadow--alert);
@@ -28,7 +28,7 @@
   z-index: 1;
 }
 
-.alert-actions {
+.actions {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -36,16 +36,12 @@
   margin-top: 26px;
 }
 
-.alert-actions > .cs-button + .cs-button {
-  margin-left: 10px;
-}
-
-.alert-message {
+.message {
   color: var(--black);
   margin: 6px auto;
 }
 
-.alert-title {
+.title {
   color: var(--dark-black);
   font-size: 22px;
   font-weight: 600;

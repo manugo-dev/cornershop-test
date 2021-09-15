@@ -1,7 +1,7 @@
 import { HTMLProps, ReactNode, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import Transition from 'react-transition-group/Transition';
 import cn from 'classnames';
+import Transition from 'react-transition-group/Transition';
 
 import AlertActions from './components/AlertActions';
 import AlertMessage from './components/AlertMessage';
@@ -55,10 +55,10 @@ function Alert({ children, className = '', isVisible, onClose, onOpen, ...rest }
             tabIndex={-1}
             {...rest}
           >
-            <div className={cn(styles.alertBackdrop, 'cs-fade-transition', `cs-fade-${status}`)} />
+            <div className={cn(styles.backdrop, 'cs-fade-transition', `cs-fade-${status}`)} />
             <div
               ref={alertContentRef}
-              className={cn(styles.alertcontent, styles.slideTransiition, styles[`slide-${status}`])}
+              className={cn(styles.content, styles['slide-transiition'], styles[`slide-${status}`])}
               tabIndex={-1}
               role="document"
             >

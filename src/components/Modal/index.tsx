@@ -55,10 +55,10 @@ function Modal({ children, className = '', isVisible, onClose, onOpen, ...rest }
             tabIndex={-1}
             {...rest}
           >
-            <div className={cn(styles.modalBackdrop, 'cs-fade-transition', `cs-fade-${status}`)} />
+            <div className={cn(styles.backdrop, 'cs-fade-transition', `cs-fade-${status}`)} />
             <div
               ref={modalContentRef}
-              className={cn(styles.modalContent, styles.slideTransition, styles[`slide-${status}`])}
+              className={cn(styles.content, styles['slide-transition'], styles[`slide-${status}`])}
               tabIndex={-1}
               role="document"
             >

@@ -5,26 +5,26 @@ https://tobiasahlin.com/spinkit/ */
   height: 114px;
   position: relative;
   width: 114px;
+}
 
-  &-bouncer {
-    animation: bounce 1800ms infinite ease-in-out;
-    background-color: #ff9500;
-    border-radius: 50%;
-    height: 100%;
-    opacity: 0.5;
-    position: absolute;
-    width: 100%;
-  }
+.bouncer {
+  animation: bounce 1800ms infinite ease-in-out;
+  background-color: #ff9500;
+  border-radius: 50%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+}
 
-  &-bouncer:nth-child(2) {
-    animation: bounce 1800ms infinite ease-in-out;
-    animation-delay: -200ms;
-  }
+.bouncer:nth-child(2) {
+  animation: bounce 1800ms infinite ease-in-out;
+  animation-delay: -200ms;
+}
 
-  &-bouncer:last-child {
-    animation: bounce 1800ms infinite ease-in-out;
-    animation-delay: -400ms;
-  }
+.bouncer:last-child {
+  animation: bounce 1800ms infinite ease-in-out;
+  animation-delay: -400ms;
 }
 
 @keyframes bounce {

@@ -123,7 +123,7 @@ function Cookbook() {
           <Alert.Title>Alert title</Alert.Title>
           <Alert.Message>Alert message</Alert.Message>
           <Alert.Actions>
-            <Button kind={ButtonKind.RAISED} onClick={hideAlert}>
+            <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={hideAlert}>
               Action
             </Button>
             <Button kind={ButtonKind.RAISED} color={ButtonColor.DANGER} onClick={hideAlert}>
