@@ -1,4 +1,4 @@
-import { IconsProps } from '.';
+import { IconsProps } from 'types/Icons';
 
 function OpenIcon({ fill = 'var(--dark-black)' }: IconsProps) {
   return (

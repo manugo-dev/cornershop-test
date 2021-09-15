@@ -1,4 +1,4 @@
-import { IconsProps } from '.';
+import { IconsProps } from 'types/Icons';
 
 function SearchIcon({ fill = 'var(--dark-black)' }: IconsProps) {
   return (

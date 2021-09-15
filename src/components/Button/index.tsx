@@ -1,7 +1,7 @@
-import classnames from 'classnames';
+import cn from 'classnames';
 import { HTMLProps } from 'react';
 
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
 export enum ButtonSize {
   REGULAR,
@@ -20,17 +20,17 @@ export enum ButtonColor {
 
 const ButtonSizeClasses = {
   [ButtonSize.REGULAR]: '',
-  [ButtonSize.BIG]: styles['cs-button--big']
+  [ButtonSize.BIG]: styles.big
 };
 const ButtonKindClasses = {
   [ButtonKind.REGULAR]: '',
-  [ButtonKind.FLAT]: styles['cs-button--flat'],
-  [ButtonKind.RAISED]: styles['cs-button--raised']
+  [ButtonKind.FLAT]: styles.flat,
+  [ButtonKind.RAISED]: styles.raised
 };
 const ButtonColorClasses = {
   [ButtonColor.REGULAR]: '',
-  [ButtonColor.DANGER]: styles['cs-button--danger'],
-  [ButtonColor.WHITE]: styles['cs-button--white']
+  [ButtonColor.DANGER]: styles.danger,
+  [ButtonColor.WHITE]: styles.white
 };
 
 export type ButtonType = JSX.IntrinsicElements['button']['type'];
@@ -51,8 +51,8 @@ function Button({
   size = ButtonSize.REGULAR,
   ...rest
 }: Props) {
-  const classes = classnames(
-    styles['cs-button'],
+  const classes = cn(
+    styles.button,
     ButtonColorClasses[color],
     ButtonKindClasses[kind],
     ButtonSizeClasses[size],

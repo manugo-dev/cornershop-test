@@ -1,7 +1,7 @@
-import Welcome from 'screens/Welcome';
+import Cookbook from 'screens/Cookbook';
 
 function App() {
-  return <Welcome />;
+  return <Cookbook />;
 }
 
 export default App;

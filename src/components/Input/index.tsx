@@ -1,7 +1,7 @@
-import classnames from 'classnames';
+import cn from 'classnames';
 import { HTMLProps } from 'react';
 
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
 export enum InputSize {
   REGULAR,
@@ -10,7 +10,7 @@ export enum InputSize {
 
 const InputSizeClasses = {
   [InputSize.REGULAR]: '',
-  [InputSize.BIG]: styles['cs-input--big']
+  [InputSize.BIG]: styles.big
 };
 
 interface Props extends HTMLProps<HTMLInputElement> {
@@ -19,7 +19,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
 }
 
 function Input({ className = '', size = InputSize.REGULAR, ...rest }: Props) {
-  const classes = classnames(styles['cs-input'], InputSizeClasses[size], className);
+  const classes = cn(styles.input, InputSizeClasses[size], className);
 
   return <input className={classes} {...rest} />;
 }

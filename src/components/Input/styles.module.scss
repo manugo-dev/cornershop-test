@@ -1,4 +1,4 @@
-.cs-input {
+.input {
   appearance: none;
   background-color: var(--white);
   border: var(--with-border);
@@ -10,9 +10,9 @@
   height: 44px;
   padding: 12px;
   width: 100%;
-}
 
-.cs-input:focus {
-  outline: 2px solid var(--app-tint);
-  outline-style: auto;
+  &:focus {
+    outline: 2px solid var(--app-tint);
+    outline-style: auto;
+  }
 }
