@@ -1,4 +1,6 @@
-const OpenIcon = ({ fill = 'var(--dark-black)' }) => {
+import { IconsProps } from '.';
+
+function OpenIcon({ fill = 'var(--dark-black)' }: IconsProps) {
   return (
     <svg width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -7,6 +9,6 @@ const OpenIcon = ({ fill = 'var(--dark-black)' }) => {
       />
     </svg>
   );
-};
+}
 
 export default OpenIcon;

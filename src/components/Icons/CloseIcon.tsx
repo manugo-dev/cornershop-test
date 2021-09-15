@@ -1,4 +1,6 @@
-const CloseIcon = ({ fill = 'var(--dark-black)' }) => {
+import { IconsProps } from '.';
+
+function CloseIcon({ fill = 'var(--dark-black)' }: IconsProps) {
   return (
     <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -11,6 +13,6 @@ const CloseIcon = ({ fill = 'var(--dark-black)' }) => {
       />
     </svg>
   );
-};
+}
 
 export default CloseIcon;

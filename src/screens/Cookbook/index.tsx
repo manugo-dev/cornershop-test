@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { Loading } from 'components/Loading';
-import { Input } from 'components/Input';
+import Input from 'components/Input';
+import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
 import {
   CloseIcon,
   DecrementIcon,
@@ -11,7 +12,6 @@ import {
   SearchIcon,
   TrashBinIcon
 } from 'components/Icons';
-import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
 import { Alert } from 'components/Alert';
 import { Modal } from 'components/Modal';
 import useAlert from 'hooks/useAlert';
