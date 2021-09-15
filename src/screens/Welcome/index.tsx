@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
-import Button from 'components/Button';
 
+import paths from 'components/App/paths';
 import styles from './styles.module.scss';
 
 function Welcome() {
@@ -13,7 +14,9 @@ function Welcome() {
       <p className="text center m-bottom-15">
         Capture cups of lattes, frapuccinos, or anything else that can be counted.
       </p>
-      <Button>Get started</Button>
+      <Link className="button" to={paths.counters}>
+        Get started
+      </Link>
     </div>
   );
 }
