@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { useTranslation } from 'react-i18next';
@@ -45,7 +46,7 @@ function ExamplesModal({ modalRef, isModalVisible, hideModal, countersActions }:
         {loading && <Loading fullScreen />}
         <p className="text grey m-bottom-5">{t('examplesDescription')}</p>
         {MOCKS.map((category) => (
-          <>
+          <Fragment key={category.title}>
             <h3 className="m-bottom-1 m-top-5">{category.title}</h3>
             <div className={cn('full-width overflow-x', styles.options)}>
               {category.items.map((item) => (
@@ -60,7 +61,7 @@ function ExamplesModal({ modalRef, isModalVisible, hideModal, countersActions }:
                 </Button>
               ))}
             </div>
-          </>
+          </Fragment>
         ))}
       </Modal.Body>
     </Modal>
