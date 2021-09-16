@@ -1,21 +1,16 @@
-import { useEffect, useState } from 'react';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect, ConnectedProps } from 'react-redux';
+import { useState } from 'react';
 import cn from 'classnames';
 
-import useModal from 'hooks/useModal';
 import Button, { ButtonColor } from 'components/Button';
 import { NewIcon, OpenIcon, TrashBinIcon } from 'components/Icons';
+import useModal from 'hooks/useModal';
 import CreateCounter from 'screens/CreateCounter';
-import { actionCreators } from 'redux/ducks/counters';
 
 import Search from './components/Search';
 import CounterList from './components/CounterList';
 import styles from './styles.module.scss';
 
-interface Props extends ConnectedProps<typeof connector> {}
-
-function Counters({ countersActions }: Props) {
+function Counters() {
   const { isVisible: isModalVisible, hideModal, showModal } = useModal();
   const [search, setSearch] = useState<string | undefined>();
   const [searchActive, setSearchActive] = useState(false);
@@ -35,16 +30,17 @@ function Counters({ countersActions }: Props) {
     setSearchActive(false);
   };
 
-  useEffect(() => {
-    countersActions.getCounters(search);
-  }, [search]);
-
   return (
     <>
       <header className={styles.header}>
-        <Search onChange={onSearchChange} onFocus={onSearchFocus} onBlur={onSearchBlur} />
+        <Search
+          className={styles.search}
+          onChange={onSearchChange}
+          onFocus={onSearchFocus}
+          onBlur={onSearchBlur}
+        />
       </header>
-      <section className={cn('column middle center', styles.content, { [styles.overflow]: searchActive })}>
+      <section className={cn('column', styles.content, { [styles.overflow]: searchActive })}>
         <CounterList search={search} />
         <CreateCounter.Modal isModalVisible={isModalVisible} hideModal={hideModal} />
       </section>
@@ -65,9 +61,4 @@ function Counters({ countersActions }: Props) {
   );
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  countersActions: bindActionCreators(actionCreators, dispatch)
-});
-const connector = connect(null, mapDispatchToProps);
-
-export default connector(Counters);
+export default Counters;

@@ -1,11 +1,13 @@
 :root {
   /* Sizes */
-  --header-height: 60px;
+  --header-height: 70px;
   --footer-height: 60px;
   --page-width: 570px;
+  --search-width: 380px;
 
   /* Colors */
   --app-tint: #ff9500;
+  --alpha-app-tint: rgb(255, 149, 0, 0.2);
   --destructive-red: #ff3b30;
   --white: #fff;
   --dark-black: #2b2b2b;
@@ -13,7 +15,7 @@
   --grey: #888b90;
   --ligth-gray: #c4c4c4;
   --silver: #dcdcdf;
-  --white-overflow: rgba(255, 255, 255, 0.6);
+  --white-overflow: rgba(255, 255, 255, 0.8);
   --alpha-005: rgba(0, 0, 0, 0.05);
   --alpha-01: rgba(0, 0, 0, 0.1);
   --alpha-015: rgba(0, 0, 0, 0.15);

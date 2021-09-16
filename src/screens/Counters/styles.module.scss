@@ -1,16 +1,21 @@
 .header {
+  background: var(--white);
   height: var(--header-height);
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
+}
+
+.search {
+  width: var(--search-width);
 }
 
 .content {
-  height: 100%;
   margin: auto;
   max-width: 100%;
-  padding: 60px 40px;
+  min-height: 100%;
+  padding: 80px 10px;
   width: var(--page-width);
 }
 
@@ -26,8 +31,9 @@
   bottom: 0;
   height: var(--footer-height);
   padding: 10px;
-  position: absolute;
+  position: fixed;
   width: 100%;
+  z-index: 10;
 }
 
 .overflow {
@@ -39,5 +45,6 @@
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 5;
   }
 }

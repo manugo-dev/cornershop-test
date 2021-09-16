@@ -3,7 +3,7 @@ import { ApiErrorResponse, ApiOkResponse, PROBLEM_CODE, ApiResponse, CancelToken
 
 import { Nullable } from 'types/Global';
 
-import { useMounted } from './useMounted';
+import useMounted from './useMounted';
 
 export type CancelTokenType = typeof CancelToken;
 export type CancelTokenSource = ReturnType<CancelTokenType['source']>;

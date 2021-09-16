@@ -29,7 +29,7 @@ function Search({ className = '', onFocus, onChange, onBlur }: Props) {
   };
 
   return (
-    <div className={cn('row m-auto', styles.bar)}>
+    <div className={cn('row middle m-auto', styles.bar, className)}>
       <Input
         value={value || ''}
         onChange={({ currentTarget }) => {

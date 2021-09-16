@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import useModal from 'hooks/useModal';
+import { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -26,8 +27,13 @@ function CreateCounter({ onSubmit, countersActions }: Props) {
     showModal: showExamplesModal
   } = useModal();
 
+  const handleSubmit = (formEvent: FormEvent) => {
+    formEvent.preventDefault();
+    onSubmit();
+  };
+
   return (
-    <form className={cn(styles.content)} onSubmit={onSubmit}>
+    <form className={cn(styles.content)} onSubmit={handleSubmit}>
       <Input
         label={t('name')}
         placeholder={DEFAULT_PLACEHOLDER}
@@ -36,7 +42,7 @@ function CreateCounter({ onSubmit, countersActions }: Props) {
       />
       <p>
         {t('exampleHelp')}
-        <Button className="link" onClick={() => showExamplesModal()}>
+        <Button className="clean link m-left-1" onClick={() => showExamplesModal()}>
           {t('exampleLink')}
         </Button>
       </p>

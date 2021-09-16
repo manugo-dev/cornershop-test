@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useMounted } from './useMounted';
+import useMounted from './useMounted';
 
 test('should be mounted', () => {
   const { result } = renderHook(() => useMounted());

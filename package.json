@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.1",
     "@types/lodash": "^4.14.173",
     "@types/node": "^16.9.1",

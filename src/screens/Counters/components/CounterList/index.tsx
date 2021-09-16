@@ -1,29 +1,55 @@
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { NETWORK_ERROR } from 'apisauce';
 import cn from 'classnames';
 
-import Button, { ButtonColor } from 'components/Button';
+import Button, { ButtonColor, ButtonKind } from 'components/Button';
 import Loading from 'components/Loading';
-import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
-
-import { Counter } from 'types/Counter';
-import { bindActionCreators, Dispatch } from 'redux';
 import RefreshIcon from 'components/Icons/RefreshIcon';
+import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
+import { getCounters } from 'services/CounterService';
+import { useRequest } from 'hooks/useRequest';
+import { Counter } from 'types/Counter';
+
+import { useEffect } from 'react';
 import styles from './styles.module.scss';
+import CounterElement from '../CounterElement';
 
 interface Props extends ConnectedProps<typeof connector> {
   search?: string;
 }
 
-function CounterList({ search, list, countersActions }: Props) {
+function CounterList({ search, selected, counters, fetchCount, countersActions }: Props) {
   const { t } = useTranslation('CounterList');
-  const { isLoading, data: counters, problem, updateCount } = list;
 
-  const isNetworkError = problem && problem === NETWORK_ERROR;
+  useEffect(() => {
+    countersActions.resetFetchCounter();
+  }, [search]);
+
+  const [, loading, error, doGetCounters] = useRequest(
+    {
+      request: getCounters,
+      payload: search,
+      withPostFetch: () => {
+        countersActions.incrementFetchCounter();
+      },
+      withPostSuccess: (data) => {
+        if (data) {
+          countersActions.setCounters(data);
+        }
+      },
+      withPostFailure: () => {
+        countersActions.setCounters([]);
+      }
+    },
+    [search]
+  );
+
+  const isNetworkError = error?.problem && error.problem === NETWORK_ERROR;
   const isNotEmpty = counters && counters.length > 0;
-  const noSearchResults = !isNetworkError && !isLoading && !isNotEmpty && search;
-  const noCountersCreated = !isLoading && !isNotEmpty && !search;
+  const noSearchResults = !isNetworkError && !loading && !isNotEmpty && search;
+  const noCountersCreated = !loading && !isNetworkError && !isNotEmpty && !search;
 
   // TODO: Get it from API
   const quote = {
@@ -32,40 +58,62 @@ function CounterList({ search, list, countersActions }: Props) {
   };
 
   return (
-    <div className={cn('column middle center', styles.wrapper, { top: isNotEmpty })}>
-      {isNotEmpty && updateCount && (
-        <>
-          <span className="text bold">{t('itemCount', counters.length.toString())}</span>{' '}
-          <span className="text">{t('refreshCount', updateCount.toString())}</span>
-          <RefreshIcon />
-        </>
+    <>
+      {isNotEmpty && fetchCount > 0 && (
+        <div className={cn('row m-bottom-4', styles.counters)}>
+          {selected ? (
+            <span className="text bold primary m-right-2">{t('itemSelected', { count: selected })}</span>
+          ) : (
+            <>
+              <span className="text bold m-right-1">{t('itemCount', { count: counters.length })}</span>
+              <span className="text m-right-1">{t('refreshCount', { count: fetchCount })}</span>
+            </>
+          )}
+          {loading ? (
+            <div className="row middle">
+              <RefreshIcon fill="var(--app-tint)" className="m-right-1 m-bottom-1" />
+              <span className="text primary">{t('refreshing')}</span>
+            </div>
+          ) : (
+            <Button kind={ButtonKind.CLEAN} onClick={() => doGetCounters(search)} disabled={loading}>
+              <RefreshIcon className="m-bottom-1" />
+            </Button>
+          )}
+        </div>
       )}
-      {isLoading && <Loading className="m-auto" />}
+      {loading && <Loading className="m-auto" />}
       {isNetworkError && (
-        <>
+        <div className="m-auto">
           <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
           <p className="text center m-bottom-5">{t('noConnection')}</p>
-          <Button
-            color={ButtonColor.WHITE}
-            onClick={() => countersActions.getCounters(search)}
-            disabled={isLoading}
-          >
+          <Button color={ButtonColor.WHITE} onClick={() => doGetCounters(search)} disabled={loading}>
             {t('Global:retry')}
           </Button>
-        </>
+        </div>
       )}
-      {noSearchResults && <p>{t('noResults')}</p>}
+      {noSearchResults && <p className="m-auto text center">{t('noResults')}</p>}
       {noCountersCreated && (
-        <>
+        <div className="m-auto">
           <h1 className="title center">{t('noCounters')}</h1>
           <p className="text center m-bottom-2">“{quote.message}”</p>
-          <span> — {quote.author}</span>
-        </>
+          <span className="text center"> — {quote.author}</span>
+        </div>
       )}
-      {!isLoading &&
-        isNotEmpty &&
-        counters?.map((counter: Counter) => <div key={counter.id}>{counter.title}</div>)}
-    </div>
+      {!loading && isNotEmpty && (
+        <ul className={styles.list}>
+          {counters?.map((counter: Counter) => (
+            <li
+              key={counter.id}
+              className={cn('row middle full-width m-bottom-3', styles.element, {
+                [styles.selected]: counter.selected
+              })}
+            >
+              <CounterElement {...counter} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 

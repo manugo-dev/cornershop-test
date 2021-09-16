@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import i18next from 'i18next';
 
 i18next.addResources('en', 'Global', {
@@ -19,10 +20,20 @@ i18next.addResources('en', 'CounterList', {
   noCounters: 'No counters yet',
   noResults: 'No results',
   couldNotLoad: 'Couldn’t load the counters',
-  noConnection: 'The Internet connection appears to be offline.'
+  noConnection: 'The Internet connection appears to be offline.',
+  itemCount: '{{count}} item',
+  itemCount_plural: '{{count}} items',
+  itemSelected: '{{count}} selected',
+  itemSelected_plural: '{{count}} selected',
+  refreshCount: '{{count}} time',
+  refreshCount_plural: '{{count}} times',
+  refreshing: 'Refreshing...'
 });
 
 i18next.addResources('en', 'CreateCounter', {
+  createTitle: 'Create counter',
+  examplesTitle: 'Examples',
+  examplesDescription: 'Select an example to add it to your counters.',
   name: 'Name',
   exampleHelp: 'Give it a name. Creative block? See',
   exampleLink: 'examples'

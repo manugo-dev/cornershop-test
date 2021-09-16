@@ -18,6 +18,7 @@
   &::before {
     border-radius: inherit;
     bottom: -1px;
+    box-shadow: var(--with-shadow--hover);
     content: '';
     left: -1px;
     pointer-events: none;
@@ -45,70 +46,94 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
+}
 
-  &:not(.flat):hover {
-    box-shadow: var(--with-shadow--hover);
-  }
+.link,
+.link:hover,
+.link:hover::before {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--black);
+  height: auto;
+  padding: 0 3px;
+  text-decoration: underline;
+}
 
-  &.link,
-  &.link:hover,
-  &.link:hover::before {
-    background: none;
-    border: 0;
+.link:hover {
+  box-shadow: none;
+  color: var(--app-tint);
+}
+
+/* Size */
+.big {
+  height: 48px;
+  padding: 12px 18px;
+}
+
+/* Kind */
+.clean::before {
+  display: none;
+}
+
+.clean,
+.clean:hover,
+.clean:hover::before {
+  align-items: initial;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--black);
+  height: auto;
+  justify-content: initial;
+  padding: 0;
+}
+
+.clean > span {
+  align-items: initial;
+  justify-content: initial;
+  text-align: initial;
+}
+
+.circle {
+  background: var(--ligth-gray);
+  border-radius: 100%;
+  color: var(--white);
+  height: 28px;
+  padding: 0;
+  width: 28px;
+}
+
+.raised {
+  border-color: transparent;
+  box-shadow: var(--with-shadow--raised);
+}
+
+.raised:hover {
+  box-shadow: var(--with-shadow--raised--hover);
+}
+
+.flat {
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover {
     box-shadow: none;
-    color: var(--black);
-    height: auto;
-    padding: 0 3px;
-    text-decoration: underline;
   }
+}
 
-  &.link:hover {
-    color: var(--app-tint);
-  }
+.flat.white,
+.raised.white {
+  color: var(--app-tint);
+}
 
-  /* Size */
-  &.big {
-    height: 48px;
-    padding: 12px 18px;
-  }
+/* Color */
+.danger {
+  background-color: var(--white);
+  color: var(--destructive-red);
+}
 
-  /* Kind */
-  &.circle {
-    background: var(--ligth-gray);
-    border-radius: 100%;
-    color: var(--white);
-    height: 28px;
-    padding: 0;
-    width: 28px;
-  }
-
-  &.raised {
-    border-color: transparent;
-    box-shadow: var(--with-shadow--raised);
-  }
-
-  &.raised:hover {
-    box-shadow: var(--with-shadow--raised--hover);
-  }
-
-  &.flat {
-    border-color: transparent;
-    box-shadow: none;
-  }
-
-  &.flat.white,
-  &.raised.white {
-    color: var(--app-tint);
-  }
-
-  /* Color */
-  &.danger {
-    background-color: var(--white);
-    color: var(--destructive-red);
-  }
-
-  &.white {
-    background-color: var(--white);
-    color: var(--black);
-  }
+.white {
+  background-color: var(--white);
+  color: var(--black);
 }

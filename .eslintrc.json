@@ -27,6 +27,7 @@
     "react-hooks/exhaustive-deps": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "no-case-declarations": "off",
     "linebreak-style": 1,
     "prettier/prettier": [
       "error",

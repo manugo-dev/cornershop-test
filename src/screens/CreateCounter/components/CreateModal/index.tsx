@@ -8,18 +8,22 @@ import { CloseIcon } from 'components/Icons';
 import Modal from 'components/Modal';
 import CreateCounter from 'screens/CreateCounter';
 import { ModalProps } from 'types/Modal';
+import { useLazyRequest } from 'hooks/useRequest';
+import { addCounter } from 'services/CounterService';
+import Loading from 'components/Loading';
 
 interface CreateCounterModalProps extends ModalProps, ConnectedProps<typeof connector> {}
 
 function CreateCounterModal({ isModalVisible, hideModal, countersActions, title }: CreateCounterModalProps) {
   const { t } = useTranslation('CreateCounter');
 
-  const createCounter = () => {
-    if (title) {
-      countersActions.addCounter(title);
+  const [, loading, , createCounter] = useLazyRequest({
+    request: addCounter,
+    withPostSuccess: (data) => {
+      countersActions.addCounter(data);
       hideModal();
     }
-  };
+  });
 
   return (
     <Modal isVisible={isModalVisible}>
@@ -28,19 +32,20 @@ function CreateCounterModal({ isModalVisible, hideModal, countersActions, title 
           <CloseIcon fill="var(--white)" />
         </Button>
         <Modal.Title>{t('createTitle')}</Modal.Title>
-        <Button className="m-left-auto" onClick={() => createCounter()}>
+        <Button className="m-left-auto" onClick={() => createCounter(title)}>
           Save
         </Button>
       </Modal.Header>
       <Modal.Body>
-        <CreateCounter onSubmit={() => createCounter()} />
+        {loading && <Loading />}
+        <CreateCounter onSubmit={() => createCounter(title)} />
       </Modal.Body>
     </Modal>
   );
 }
 
 const mapStateToProps = (state: { [countersReducerName]: CountersState }) => ({
-  title: state[countersReducerName].create.creationTitle
+  title: state[countersReducerName].creationTitle
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

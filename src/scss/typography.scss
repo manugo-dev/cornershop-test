@@ -16,6 +16,14 @@ $bold: 600;
 
 .title,
 .text {
+  &.primary {
+    color: var(--app-tint);
+  }
+
+  &.grey {
+    color: var(--grey);
+  }
+
   &.center {
     text-align: center;
   }
