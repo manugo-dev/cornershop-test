@@ -1,3 +1,69 @@
 .counters {
   text-align: left;
 }
+
+.share {
+  position: relative;
+}
+
+.paper {
+  background: radial-gradient(var(--white) 2px, var(--silver) 3px, transparent 4px) repeat-y;
+  background-size: 15px 15px;
+  border: 1px solid var(--silver);
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 10px 5px 10px 25px;
+  position: relative;
+  width: 95px;
+
+  &::before {
+    background: var(--alpha-destructive-red);
+    content: '';
+    height: 100%;
+    left: 15px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+}
+
+.copy {
+  width: 130px;
+}
+
+.popup {
+  background: var(--white);
+  border: 1px solid var(--silver);
+  border-radius: 10px;
+  bottom: calc(100% + 15px);
+  box-shadow: var(--with-shadow--raised);
+  left: 50%;
+  max-width: 100vw;
+  padding: 15px;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 320px;
+
+  &::before {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--silver);
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--white);
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: calc(100% - 2px);
+    transform: translateX(-50%);
+  }
+}

@@ -44,5 +44,9 @@ i18next.addResources('en', 'CreateCounter', {
 i18next.addResources('en', 'CounterActions', {
   cannotUndone: 'This cannot be undone.',
   deleteCounter: 'Delete the {{count}} counter?',
-  deleteCounter_plural: 'Delete {{count}} counters?'
+  deleteCounter_plural: 'Delete {{count}} counters?',
+  share: 'Share {{count}} counter',
+  share_plural: 'Share {{count}} counters',
+  copy: 'Copy',
+  copied: 'Copied ✓'
 });

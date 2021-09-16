@@ -6,15 +6,16 @@
   --search-width: 380px;
 
   /* Colors */
-  --app-tint: #ff9500;
+  --app-tint: rgb(255, 149, 0);
   --alpha-app-tint: rgb(255, 149, 0, 0.2);
-  --destructive-red: #ff3b30;
-  --white: #fff;
-  --dark-black: #2b2b2b;
-  --black: #4a4a4a;
-  --grey: #888b90;
-  --ligth-grey: #c4c4c4;
-  --silver: #dcdcdf;
+  --destructive-red: rgb(255, 59, 48);
+  --alpha-destructive-red: rgb(255, 59, 48, 0.2);
+  --white: rgb(255, 255, 255);
+  --dark-black: rgb(43, 43, 43);
+  --black: rgb(74, 74, 74);
+  --grey: rgb(136, 139, 144);
+  --ligth-grey: rgb(196, 196, 196);
+  --silver: rgb(220, 220, 223);
   --white-overflow: rgba(255, 255, 255, 0.8);
   --alpha-005: rgba(0, 0, 0, 0.05);
   --alpha-01: rgba(0, 0, 0, 0.1);
