@@ -5,21 +5,20 @@ import cn from 'classnames';
 
 import Button, { ButtonColor } from 'components/Button';
 import Loading from 'components/Loading';
-import { actionCreators, CountersState } from 'redux/ducks/counters';
+import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
 
 import { Counter } from 'types/Counter';
 import { bindActionCreators, Dispatch } from 'redux';
+import RefreshIcon from 'components/Icons/RefreshIcon';
 import styles from './styles.module.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Props extends ConnectedProps<typeof connector> {
   search?: string;
 }
 
-function CounterList({ search, isLoading, list: counters, problem, updateCount, countersActions }: Props) {
+function CounterList({ search, list, countersActions }: Props) {
   const { t } = useTranslation('CounterList');
-
-  console.log(isLoading, counters, problem, updateCount);
+  const { isLoading, data: counters, problem, updateCount } = list;
 
   const isNetworkError = problem && problem === NETWORK_ERROR;
   const isNotEmpty = counters && counters.length > 0;
@@ -32,12 +31,18 @@ function CounterList({ search, isLoading, list: counters, problem, updateCount, 
 
   return (
     <div className={cn('column middle center', styles.wrapper, { top: isNotEmpty })}>
-      {isNotEmpty && updateCount && <div>update count {updateCount}</div>}
+      {isNotEmpty && updateCount && (
+        <>
+          <span className="text bold">{t('itemCount', counters.length.toString())}</span>{' '}
+          <span className="text">{t('refreshCount', updateCount.toString())}</span>
+          <RefreshIcon />
+        </>
+      )}
       {isLoading && <Loading className="m-auto" />}
       {isNetworkError && (
         <>
-          <h1 className="title center">{t('couldNotLoad')}</h1>
-          <p className="text center m-bottom-2">{t('noConnection')}</p>
+          <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
+          <p className="text center m-bottom-5">{t('noConnection')}</p>
           <Button
             color={ButtonColor.WHITE}
             onClick={() => countersActions.getCounters(search)}
@@ -62,9 +67,8 @@ function CounterList({ search, isLoading, list: counters, problem, updateCount, 
   );
 }
 
-const mapStateToProps = (state: any): CountersState => ({
-  ...state.counters.counters
-});
+const mapStateToProps = (state: { [countersReducerName]: CountersState }): CountersState =>
+  state[countersReducerName];
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   countersActions: bindActionCreators(actionCreators, dispatch)
 });
