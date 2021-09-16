@@ -22,7 +22,7 @@ const getCounters = () => fetch('/api/v1/counter', { method: 'get' }).then((res)
 
 function Cookbook() {
   const { isVisible: isAlertVisible, hideAlert, showAlert } = useAlert();
-  const { isVisible: isModalVisible, hideModal, showModal } = useModal();
+  const { modalRef, isVisible: isModalVisible, hideModal, showModal } = useModal();
 
   useEffect(() => {
     // eslint-disable-next-line no-console
@@ -139,6 +139,7 @@ function Cookbook() {
         <Button onClick={showModal}>Show!</Button>
 
         <Modal
+          modalRef={modalRef}
           isVisible={isModalVisible}
           // eslint-disable-next-line no-console
           onClose={() => console.log('Modal was closed')}

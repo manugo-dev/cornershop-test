@@ -1,7 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
+import useClickOutside from './useOutsideClick';
 
 const useModal = () => {
+  const modalRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(() => false);
+  useClickOutside(modalRef, () => setIsVisible(false));
 
   const hideModal = useCallback(() => {
     setIsVisible(false);
@@ -12,6 +15,7 @@ const useModal = () => {
   }, []);
 
   return {
+    modalRef,
     isVisible,
     hideModal,
     showModal

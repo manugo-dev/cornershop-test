@@ -20,8 +20,10 @@ interface Props extends ConnectedProps<typeof connector> {
 const DEFAULT_PLACEHOLDER = 'Cups of coffee';
 
 function CreateCounter({ onSubmit, countersActions }: Props) {
+  // const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation('CreateCounter');
   const {
+    modalRef: examplesModalRef,
     isVisible: isExamplesModalVisible,
     hideModal: hideExamplesModal,
     showModal: showExamplesModal
@@ -35,6 +37,7 @@ function CreateCounter({ onSubmit, countersActions }: Props) {
   return (
     <form className={cn(styles.content)} onSubmit={handleSubmit}>
       <Input
+        autoFocus
         label={t('name')}
         placeholder={DEFAULT_PLACEHOLDER}
         className="text bold"
@@ -46,7 +49,11 @@ function CreateCounter({ onSubmit, countersActions }: Props) {
           {t('exampleLink')}
         </Button>
       </p>
-      <ExamplesModal isModalVisible={isExamplesModalVisible} hideModal={hideExamplesModal} />
+      <ExamplesModal
+        modalRef={examplesModalRef}
+        isModalVisible={isExamplesModalVisible}
+        hideModal={hideExamplesModal}
+      />
     </form>
   );
 }

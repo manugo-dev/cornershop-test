@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 import CounterActions from './components/CounterActions';
 
 function Counters() {
-  const { isVisible: isModalVisible, hideModal, showModal } = useModal();
+  const { modalRef, isVisible: isModalVisible, hideModal, showModal } = useModal();
   const [search, setSearch] = useState<string | undefined>();
   const [searchActive, setSearchActive] = useState(false);
 
@@ -41,7 +41,7 @@ function Counters() {
       </header>
       <section className={cn('column', styles.content, { [styles.overflow]: searchActive })}>
         <CounterList search={search} />
-        <CreateCounter.Modal isModalVisible={isModalVisible} hideModal={hideModal} />
+        <CreateCounter.Modal modalRef={modalRef} isModalVisible={isModalVisible} hideModal={hideModal} />
       </section>
       <footer className={cn(styles.footer, { [styles.overflow]: searchActive })}>
         <CounterActions className={styles.actions} disabled={searchActive} openCreationModal={showModal} />

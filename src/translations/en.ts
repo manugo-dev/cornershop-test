@@ -2,7 +2,9 @@
 import i18next from 'i18next';
 
 i18next.addResources('en', 'Global', {
-  retry: 'Retry'
+  retry: 'Retry',
+  cancel: 'Cancel',
+  delete: 'Delete'
 });
 
 i18next.addResources('en', 'Welcome', {
@@ -37,4 +39,10 @@ i18next.addResources('en', 'CreateCounter', {
   name: 'Name',
   exampleHelp: 'Give it a name. Creative block? See',
   exampleLink: 'examples'
+});
+
+i18next.addResources('en', 'CounterActions', {
+  cannotUndone: 'This cannot be undone.',
+  deleteCounter: 'Delete the {{count}} counter?',
+  deleteCounter_plural: 'Delete {{count}} counters?'
 });

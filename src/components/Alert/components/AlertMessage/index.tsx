@@ -12,9 +12,9 @@ function AlertMessage({ children, className = '', ...rest }: Props) {
   const classes = cn(styles.message, className);
 
   return (
-    <p className={classes} {...rest}>
+    <div className={classes} {...rest}>
       {children}
-    </p>
+    </div>
   );
 }
 

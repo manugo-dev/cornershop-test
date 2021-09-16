@@ -4,11 +4,11 @@ import Modal from 'components/Modal';
 import { useTranslation } from 'react-i18next';
 import { ModalProps } from 'types/Modal';
 
-function ExamplesModal({ isModalVisible, hideModal }: ModalProps) {
+function ExamplesModal({ modalRef, isModalVisible, hideModal }: ModalProps) {
   const { t } = useTranslation('CreateCounter');
 
   return (
-    <Modal isVisible={isModalVisible}>
+    <Modal modalRef={modalRef} isVisible={isModalVisible}>
       <Modal.Header className="row middle">
         <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
           <CloseIcon fill="var(--white)" />

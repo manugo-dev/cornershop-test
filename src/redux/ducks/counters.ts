@@ -46,6 +46,11 @@ export interface UpdateCounter {
   payload: Counter;
 }
 
+export interface DeleteCounter {
+  type: ActionTypes.DELETE_COUNTER;
+  payload: string;
+}
+
 export interface SelectCounter {
   type: ActionTypes.SELECT_COUNTER;
   payload: string;
@@ -64,6 +69,7 @@ export type Action =
   | SetCreationTitle
   | CreateCounter
   | UpdateCounter
+  | DeleteCounter
   | SelectCounter
   | IncrementFetchCount
   | ResetFetchCount;
@@ -82,6 +88,7 @@ export const actionCreators = {
     type: ActionTypes.UPDATE_COUNTER,
     payload: counter
   }),
+  deleteCounter: (id: string): DeleteCounter => ({ type: ActionTypes.DELETE_COUNTER, payload: id }),
   selectCounter: (id: string): SelectCounter => ({ type: ActionTypes.SELECT_COUNTER, payload: id }),
   incrementFetchCounter: (): IncrementFetchCount => ({ type: ActionTypes.INCREMENT_FETCH_COUNT }),
   resetFetchCounter: (): ResetFetchCount => ({ type: ActionTypes.RESET_FETCH_COUNT })
@@ -113,6 +120,9 @@ export default function countersReducer(state = INITIAL_DATA, action: Action) {
         counters: selectCounters,
         selected: newValue ? state.selected + 1 : state.selected - 1
       };
+    case ActionTypes.DELETE_COUNTER:
+      const deletedCounters = state.counters.filter((counter) => counter.id !== action.payload);
+      return { ...state, counters: deletedCounters, selected: state.selected - 1 };
     case ActionTypes.INCREMENT_FETCH_COUNT:
       return { ...state, fetchCount: state.fetchCount + 1 };
     case ActionTypes.RESET_FETCH_COUNT:

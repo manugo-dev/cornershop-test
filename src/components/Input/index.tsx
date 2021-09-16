@@ -19,6 +19,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
   iconClassName?: string;
   size?: InputSize;
   icon?: ReactNode;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 function Input({
@@ -29,6 +30,7 @@ function Input({
   iconClassName = '',
   label,
   size = InputSize.REGULAR,
+  inputRef,
   ...rest
 }: Props) {
   return (
@@ -39,6 +41,7 @@ function Input({
         </label>
       )}
       <input
+        ref={inputRef}
         id={id}
         className={cn(styles.input, { [styles['with-icon']]: icon }, InputSizeClasses[size], inputClassName)}
         {...rest}

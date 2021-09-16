@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode, useRef } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import Transition from 'react-transition-group/Transition';
@@ -12,6 +12,7 @@ import styles from './styles.module.scss';
 const TRANSITION_TIMEOUT = 295; // ms
 
 interface Props extends HTMLProps<HTMLDivElement> {
+  modalRef: React.RefObject<HTMLDivElement>;
   children: ReactNode;
   className?: string;
   isVisible?: boolean;
@@ -19,11 +20,8 @@ interface Props extends HTMLProps<HTMLDivElement> {
   onOpen?: () => void;
 }
 
-function Modal({ children, className = '', isVisible, onClose, onOpen, ...rest }: Props) {
-  const modalContentRef = useRef<HTMLDivElement>(null);
-
+function Modal({ modalRef, children, className = '', isVisible, onClose, onOpen, ...rest }: Props) {
   const handleEntered = () => {
-    modalContentRef.current?.focus();
     if (onOpen && typeof onOpen === 'function') {
       onOpen();
     }
@@ -57,7 +55,7 @@ function Modal({ children, className = '', isVisible, onClose, onOpen, ...rest }
           >
             <div className={cn(styles.backdrop, 'cs-fade-transition', `cs-fade-${status}`)} />
             <div
-              ref={modalContentRef}
+              ref={modalRef}
               className={cn(styles.content, styles['slide-transition'], styles[`slide-${status}`])}
               tabIndex={-1}
               role="document"

@@ -14,7 +14,13 @@ import Loading from 'components/Loading';
 
 interface CreateCounterModalProps extends ModalProps, ConnectedProps<typeof connector> {}
 
-function CreateCounterModal({ isModalVisible, hideModal, countersActions, title }: CreateCounterModalProps) {
+function CreateCounterModal({
+  modalRef,
+  isModalVisible,
+  hideModal,
+  countersActions,
+  title
+}: CreateCounterModalProps) {
   const { t } = useTranslation('CreateCounter');
 
   const [, loading, , createCounter] = useLazyRequest({
@@ -26,7 +32,7 @@ function CreateCounterModal({ isModalVisible, hideModal, countersActions, title 
   });
 
   return (
-    <Modal isVisible={isModalVisible}>
+    <Modal modalRef={modalRef} isVisible={isModalVisible}>
       <Modal.Header className="row middle">
         <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
           <CloseIcon fill="var(--white)" />
