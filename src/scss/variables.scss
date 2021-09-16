@@ -1,4 +1,9 @@
 :root {
+  /* Sizes */
+  --header-height: 60px;
+  --footer-height: 60px;
+  --page-width: 570px;
+
   /* Colors */
   --app-tint: #ff9500;
   --destructive-red: #ff3b30;
@@ -7,6 +12,7 @@
   --black: #4a4a4a;
   --grey: #888b90;
   --silver: #dcdcdf;
+  --white-overflow: rgba(255, 255, 255, 0.6);
   --alpha-005: rgba(0, 0, 0, 0.05);
   --alpha-01: rgba(0, 0, 0, 0.1);
   --alpha-015: rgba(0, 0, 0, 0.15);

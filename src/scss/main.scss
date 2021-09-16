@@ -1,4 +1,4 @@
-@import 'colors';
+@import 'variables';
 @import 'layout';
 @import 'margins';
 @import 'typography';
@@ -16,7 +16,12 @@ body {
   font-family: var(--main-font);
   font-size: 17px;
   font-weight: 400;
+  height: 100%;
   line-height: var(--line-height);
+}
+
+.app {
+  height: 100%;
 }
 
 h1,

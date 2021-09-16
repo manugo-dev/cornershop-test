@@ -1,7 +1,7 @@
 import api from 'config/api';
 import { Counter } from 'types/Counter';
 
-export const getCounters = () => api.get<Counter[]>('/counter');
+export const getCounters = (search?: string) => api.get<Counter[]>('/counter', { search });
 export const addCounter = (title: string) => api.post<Counter>('/counter', { title });
 export const incrementCounter = (id: string) => api.post<Counter>('/counter/inc', { id });
 export const decrementCounter = (id: string) => api.post<Counter>('/counter/dec', { id });

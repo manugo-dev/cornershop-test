@@ -7,5 +7,6 @@ i18next.addResources('en', 'Welcome', {
 });
 
 i18next.addResources('en', 'Counters', {
-  searchCounters: 'Search Counters'
+  searchCounters: 'Search Counters',
+  cancel: 'Cancel'
 });

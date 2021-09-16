@@ -11,10 +11,10 @@ function Welcome() {
   const { t } = useTranslation('Welcome');
 
   return (
-    <div className={cn('column middle center m-top-15', styles.page)}>
-      <Logo className="m-bottom-5" />
-      <h1 className="title">{t('title')}</h1>
-      <p className="text center m-bottom-15">{t('description')}</p>
+    <div className={cn('column middle center', styles.page)}>
+      <Logo className="m-bottom-20" />
+      <h1 className="title m-top-0 m-bottom-4">{t('title')}</h1>
+      <p className="text center m-top-0 m-bottom-20">{t('description')}</p>
       <Link className="button" to={paths.counters}>
         {t('getStarted')}
       </Link>

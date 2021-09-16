@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Button from 'components/Button';
 import { HTMLProps, ReactNode } from 'react';
 
 import styles from './styles.module.scss';
@@ -20,14 +19,12 @@ interface Props extends HTMLProps<HTMLInputElement> {
   iconClassName?: string;
   size?: InputSize;
   icon?: ReactNode;
-  clearable?: boolean;
 }
 
 function Input({
   id,
   icon,
   className = '',
-  clearable = false,
   inputClassName = '',
   iconClassName = '',
   label,
@@ -43,7 +40,6 @@ function Input({
         {...rest}
       />
       {icon && <span className={cn(styles.icon, iconClassName)}>{icon}</span>}
-      {clearable && <Button>Clear</Button>}
     </div>
   );
 }
