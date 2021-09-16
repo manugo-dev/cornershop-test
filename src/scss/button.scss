@@ -43,7 +43,7 @@
 
   &:disabled,
   &[disabled] {
-    background-color: var(--ligth-grey);
+    background-color: var(--light-grey);
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -101,7 +101,7 @@
 }
 
 .circle {
-  background: var(--ligth-grey);
+  background: var(--light-grey);
   border-radius: 100%;
   color: var(--white);
   height: 28px;
@@ -127,8 +127,8 @@
   }
 }
 
-.flat.white,
-.raised.white {
+.flat.primary,
+.raised.primary {
   color: var(--app-tint);
 }
 
@@ -141,4 +141,15 @@
 .white {
   background-color: var(--white);
   color: var(--black);
+}
+
+.silver {
+  background-color: var(--light-silver);
+  border-color: var(--silver);
+  color: var(--black);
+}
+
+.rounded {
+  border-radius: 20px;
+  box-shadow: none;
 }

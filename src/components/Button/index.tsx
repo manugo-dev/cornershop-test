@@ -10,12 +10,14 @@ export enum ButtonKind {
   FLAT = 'flat',
   RAISED = 'raised',
   CIRCLE = 'circle',
-  CLEAN = 'clean'
+  CLEAN = 'clean',
+  ROUNDED = 'rounded'
 }
 export enum ButtonColor {
   REGULAR = 'regular',
   DANGER = 'danger',
-  WHITE = 'white'
+  WHITE = 'white',
+  SILVER = 'silver'
 }
 
 const ButtonSizeClasses = {
@@ -27,12 +29,14 @@ const ButtonKindClasses = {
   [ButtonKind.FLAT]: 'flat',
   [ButtonKind.RAISED]: 'raised',
   [ButtonKind.CIRCLE]: 'circle',
-  [ButtonKind.CLEAN]: 'clean'
+  [ButtonKind.CLEAN]: 'clean',
+  [ButtonKind.ROUNDED]: 'rounded'
 };
 const ButtonColorClasses = {
   [ButtonColor.REGULAR]: '',
   [ButtonColor.DANGER]: 'danger',
-  [ButtonColor.WHITE]: 'white'
+  [ButtonColor.WHITE]: 'white',
+  [ButtonColor.SILVER]: 'silver'
 };
 
 export type ButtonType = JSX.IntrinsicElements['button']['type'];

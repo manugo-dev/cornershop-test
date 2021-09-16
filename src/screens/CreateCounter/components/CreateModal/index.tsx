@@ -12,14 +12,17 @@ import { useLazyRequest } from 'hooks/useRequest';
 import { addCounter } from 'services/CounterService';
 import Loading from 'components/Loading';
 
-interface CreateCounterModalProps extends ModalProps, ConnectedProps<typeof connector> {}
+interface CreateCounterModalProps extends ModalProps, ConnectedProps<typeof connector> {
+  showExamples: () => void;
+}
 
 function CreateCounterModal({
   modalRef,
   isModalVisible,
   hideModal,
   countersActions,
-  title
+  title,
+  showExamples
 }: CreateCounterModalProps) {
   const { t } = useTranslation('CreateCounter');
 
@@ -44,7 +47,7 @@ function CreateCounterModal({
       </Modal.Header>
       <Modal.Body>
         {loading && <Loading fullScreen />}
-        <CreateCounter onSubmit={() => createCounter(title)} />
+        <CreateCounter onSubmit={() => createCounter(title)} showExamples={showExamples} />
       </Modal.Body>
     </Modal>
   );

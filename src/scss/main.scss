@@ -57,3 +57,37 @@ textarea {
 .full-width {
   width: 100%;
 }
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+/* background of the scrollbar except button or resizer */
+::-webkit-scrollbar-track {
+  background-color: var(--light-silver);
+  border: 2px solid var(--white);
+  border-radius: 15px;
+}
+
+/* scrollbar itself */
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border: 2px solid var(--white);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var(--silver);
+  border: 1px solid var(--white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--app-tint);
+  border: 1px solid var(--white);
+  cursor: pointer;
+}
