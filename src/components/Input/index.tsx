@@ -32,8 +32,12 @@ function Input({
   ...rest
 }: Props) {
   return (
-    <div className={cn('row middle center', styles.wrapper, className)}>
-      {label && <label htmlFor={id}>{label}</label>}
+    <div className={cn('row middle wrap', styles.wrapper, className)}>
+      {label && (
+        <label htmlFor={id} className="full-width m-bottom-2">
+          {label}
+        </label>
+      )}
       <input
         id={id}
         className={cn(styles.input, { [styles['with-icon']]: icon }, InputSizeClasses[size], inputClassName)}

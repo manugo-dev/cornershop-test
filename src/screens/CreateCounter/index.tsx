@@ -1,32 +1,26 @@
+import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 
-import Button, { ButtonKind } from 'components/Button';
-import { CloseIcon } from 'components/Icons';
-import Modal from 'components/Modal';
+import Button from 'components/Button';
+import Input from 'components/Input';
 import useModal from 'hooks/useModal';
+import { useTranslation } from 'react-i18next';
+import CreateCounterModal from './components/CreateModal';
 
+import ExamplesModal from './components/ExamplesModal';
 import styles from './styles.module.scss';
 
-interface ModalProps {
-  isModalVisible: boolean;
-  hideModal: () => void;
+interface FormValues {
+  title: string;
 }
 
-function ExamplesModal({ isModalVisible, hideModal }: ModalProps) {
-  return (
-    <Modal isVisible={isModalVisible}>
-      <Modal.Header className="row middle" withCloseButton>
-        <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
-          <CloseIcon fill="var(--white)" />
-        </Button>
-        <Modal.Title>Examples</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>examples modal</Modal.Body>
-    </Modal>
-  );
+interface Props {
+  onSubmit: ({ title }: FormValues) => void;
 }
 
-function CreateCounterModal({ isModalVisible, hideModal }: ModalProps) {
+function CreateCounter({ onSubmit }: Props) {
+  const { t } = useTranslation('CreateCounter');
+  const { handleSubmit } = useForm();
   const {
     isVisible: isExamplesModalVisible,
     hideModal: hideExamplesModal,
@@ -34,28 +28,18 @@ function CreateCounterModal({ isModalVisible, hideModal }: ModalProps) {
   } = useModal();
 
   return (
-    <Modal isVisible={isModalVisible}>
-      <Modal.Header className="row middle" withCloseButton>
-        <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
-          <CloseIcon fill="var(--white)" />
+    <form className={cn(styles.content)} onSubmit={handleSubmit(onSubmit)}>
+      <Input label={t('name')} placeholder="Cups of coffee" className="text bold" />
+      <p>
+        {t('exampleHelp')}
+        <Button className="link" onClick={() => showExamplesModal()}>
+          {t('exampleLink')}
         </Button>
-        <Modal.Title>Create counter</Modal.Title>
-        <Button className="m-left-auto" onClick={() => hideModal()}>
-          Save
-        </Button>
-      </Modal.Header>
-      <Modal.Body>
-        <Button onClick={() => showExamplesModal()}>examples</Button>
-        <ExamplesModal isModalVisible={isExamplesModalVisible} hideModal={hideExamplesModal} />
-      </Modal.Body>
-    </Modal>
+      </p>
+      <ExamplesModal isModalVisible={isExamplesModalVisible} hideModal={hideExamplesModal} />
+    </form>
   );
 }
 
-function CreateCounter() {
-  return <div className={cn(styles.content)}>counter creator</div>;
-}
-
 CreateCounter.Modal = CreateCounterModal;
-CreateCounter.ExamplesModal = ExamplesModal;
 export default CreateCounter;

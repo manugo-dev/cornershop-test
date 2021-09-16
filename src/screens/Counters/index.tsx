@@ -2,8 +2,8 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import useModal from 'hooks/useModal';
-import Button from 'components/Button';
-import { NewIcon } from 'components/Icons';
+import Button, { ButtonColor } from 'components/Button';
+import { NewIcon, OpenIcon, TrashBinIcon } from 'components/Icons';
 import CreateCounter from 'screens/CreateCounter';
 import Search from './components/Search';
 
@@ -40,9 +40,17 @@ function Counters() {
         <CreateCounter.Modal isModalVisible={isModalVisible} hideModal={hideModal} />
       </section>
       <footer className={cn(styles.footer, { [styles.overflow]: searchActive })}>
-        <Button disabled={searchActive} onClick={() => showModal()}>
-          <NewIcon />
-        </Button>
+        <div className={cn('row middle', styles.actions)}>
+          <Button color={ButtonColor.DANGER} className="m-right-2" disabled={searchActive}>
+            <TrashBinIcon fill="var(--destructive-red)" />
+          </Button>
+          <Button color={ButtonColor.WHITE} disabled={searchActive}>
+            <OpenIcon fill="var(--dark-black)" />
+          </Button>
+          <Button className="m-left-auto" disabled={searchActive} onClick={() => showModal()}>
+            <NewIcon fill="var(--white)" />
+          </Button>
+        </div>
       </footer>
     </>
   );

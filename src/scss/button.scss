@@ -6,7 +6,6 @@
   box-shadow: var(--with-shadow);
   color: var(--white);
   cursor: pointer;
-  display: inline-block;
   display: inline-flex;
   font-size: inherit;
   height: 40px;
@@ -49,6 +48,22 @@
 
   &:not(.flat):hover {
     box-shadow: var(--with-shadow--hover);
+  }
+
+  &.link,
+  &.link:hover,
+  &.link:hover::before {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    color: var(--black);
+    height: auto;
+    padding: 0 3px;
+    text-decoration: underline;
+  }
+
+  &.link:hover {
+    color: var(--app-tint);
   }
 
   /* Size */

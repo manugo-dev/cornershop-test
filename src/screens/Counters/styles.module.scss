@@ -14,11 +14,18 @@
   width: var(--page-width);
 }
 
+.actions {
+  margin: auto;
+  max-width: 100%;
+  width: var(--page-width);
+}
+
 .footer {
   background: var(--white);
   border-top: 1px solid var(--alpha-01);
   bottom: 0;
   height: var(--footer-height);
+  padding: 10px;
   position: absolute;
   width: 100%;
 }
