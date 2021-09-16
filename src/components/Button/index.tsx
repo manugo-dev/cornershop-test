@@ -8,7 +8,8 @@ export enum ButtonSize {
 export enum ButtonKind {
   REGULAR = 'regular',
   FLAT = 'flat',
-  RAISED = 'raised'
+  RAISED = 'raised',
+  CIRCLE = 'circle'
 }
 export enum ButtonColor {
   REGULAR = 'regular',
@@ -23,7 +24,8 @@ const ButtonSizeClasses = {
 const ButtonKindClasses = {
   [ButtonKind.REGULAR]: '',
   [ButtonKind.FLAT]: 'flat',
-  [ButtonKind.RAISED]: 'raised'
+  [ButtonKind.RAISED]: 'raised',
+  [ButtonKind.CIRCLE]: 'circle'
 };
 const ButtonColorClasses = {
   [ButtonColor.REGULAR]: '',

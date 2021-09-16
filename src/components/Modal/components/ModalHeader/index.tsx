@@ -6,6 +6,7 @@ import styles from '../../styles.module.scss';
 interface Props extends HTMLProps<HTMLHeadElement> {
   children: ReactNode;
   className?: string;
+  withCloseButton?: boolean;
 }
 
 function ModalHeader({ children, className = '', ...rest }: Props) {

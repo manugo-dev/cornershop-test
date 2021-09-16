@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import Modal from 'components/Modal';
 import useModal from 'hooks/useModal';
 import Button from 'components/Button';
 import { NewIcon } from 'components/Icons';
+import CreateCounter from 'screens/CreateCounter';
 import Search from './components/Search';
 
 import styles from './styles.module.scss';
@@ -37,14 +37,7 @@ function Counters() {
       </header>
       <section className={cn('column middle center', styles.content, { [styles.overflow]: searchActive })}>
         <CounterList search={search} />
-        <Modal isVisible={isModalVisible}>
-          <Modal.Header>
-            <Modal.Title>Im a helpless modal</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button onClick={hideModal}>Hide Modal</Button>
-          </Modal.Body>
-        </Modal>
+        <CreateCounter.Modal isModalVisible={isModalVisible} hideModal={hideModal} />
       </section>
       <footer className={cn(styles.footer, { [styles.overflow]: searchActive })}>
         <Button disabled={searchActive} onClick={() => showModal()}>
