@@ -12,6 +12,7 @@ export interface CountersState {
     updateCount: number;
   };
   create: {
+    creationTitle?: string;
     isLoading?: boolean;
     isError?: boolean;
     problem?: PROBLEM_CODE;
@@ -28,11 +29,23 @@ export interface CountersState {
   };
 }
 
-export const INITIAL_DATA = {
+export const INITIAL_DATA: CountersState = {
   list: {
     isLoading: false,
     isError: false,
     updateCount: 0
+  },
+  create: {
+    isLoading: false,
+    isError: false
+  },
+  delete: {
+    isLoading: false,
+    isError: false
+  },
+  update: {
+    isLoading: false,
+    isError: false
   }
 };
 
@@ -40,6 +53,7 @@ export enum ActionTypes {
   GET_COUNTERS = '[COUNTERS]/GET_COUNTERS',
   GET_COUNTERS_SUCCESS = '[COUNTERS]/GET_COUNTERS_SUCCESS',
   GET_COUNTERS_ERROR = '[COUNTERS]/GET_COUNTERS_ERROR',
+  SET_CREATION_TITLE = '[COUNTERS]/SET_CREATION_TITLE',
   CREATE_COUNTER = '[COUNTERS]/CREATE_COUNTER',
   CREATE_COUNTER_SUCCESS = '[COUNTERS]/CREATE_COUNTER_SUCCESS',
   CREATE_COUNTER_ERROR = '[COUNTERS]/CREATE_COUNTER_ERROR',
@@ -66,10 +80,16 @@ export interface GetCountersError {
   payload: PROBLEM_CODE;
 }
 
+export interface SetCreationTitle {
+  type: ActionTypes.SET_CREATION_TITLE;
+  payload: string;
+}
+
 export interface CreateCounter {
   type: ActionTypes.CREATE_COUNTER;
   payload: string;
 }
+
 export interface CreateCounterSuccess {
   type: ActionTypes.CREATE_COUNTER_SUCCESS;
   payload: Counter;
@@ -80,10 +100,14 @@ export interface CreateCounterError {
   payload: PROBLEM_CODE;
 }
 
-export type Action = GetCounters | GetCountersSuccess | GetCountersError;
+export type Action = GetCounters | GetCountersSuccess | GetCountersError | SetCreationTitle;
 
 export const actionCreators = {
   getCounters: (search?: string): GetCounters => ({ type: ActionTypes.GET_COUNTERS, payload: search }),
+  setCreationTitle: (title: string): SetCreationTitle => ({
+    type: ActionTypes.SET_CREATION_TITLE,
+    payload: title
+  }),
   addCounter: (title: string): CreateCounter => ({ type: ActionTypes.CREATE_COUNTER, payload: title })
 };
 
@@ -112,6 +136,14 @@ export default function countersReducer(state = INITIAL_DATA, action: Action) {
           isLoading: false,
           isError: true,
           problem: action.payload
+        }
+      };
+    case ActionTypes.SET_CREATION_TITLE:
+      return {
+        ...state,
+        create: {
+          ...state.create,
+          creationTitle: action.payload
         }
       };
     default:

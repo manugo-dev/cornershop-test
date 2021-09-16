@@ -1,26 +1,25 @@
-import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
 import useModal from 'hooks/useModal';
 import { useTranslation } from 'react-i18next';
+import { connect, ConnectedProps } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { actionCreators } from 'redux/ducks/counters';
 import CreateCounterModal from './components/CreateModal';
 
 import ExamplesModal from './components/ExamplesModal';
 import styles from './styles.module.scss';
 
-interface FormValues {
-  title: string;
+interface Props extends ConnectedProps<typeof connector> {
+  onSubmit: () => void;
 }
 
-interface Props {
-  onSubmit: ({ title }: FormValues) => void;
-}
+const DEFAULT_PLACEHOLDER = 'Cups of coffee';
 
-function CreateCounter({ onSubmit }: Props) {
+function CreateCounter({ onSubmit, countersActions }: Props) {
   const { t } = useTranslation('CreateCounter');
-  const { handleSubmit } = useForm();
   const {
     isVisible: isExamplesModalVisible,
     hideModal: hideExamplesModal,
@@ -28,8 +27,13 @@ function CreateCounter({ onSubmit }: Props) {
   } = useModal();
 
   return (
-    <form className={cn(styles.content)} onSubmit={handleSubmit(onSubmit)}>
-      <Input label={t('name')} placeholder="Cups of coffee" className="text bold" />
+    <form className={cn(styles.content)} onSubmit={onSubmit}>
+      <Input
+        label={t('name')}
+        placeholder={DEFAULT_PLACEHOLDER}
+        className="text bold"
+        onChange={({ currentTarget }) => countersActions.setCreationTitle(currentTarget.value)}
+      />
       <p>
         {t('exampleHelp')}
         <Button className="link" onClick={() => showExamplesModal()}>
@@ -42,4 +46,10 @@ function CreateCounter({ onSubmit }: Props) {
 }
 
 CreateCounter.Modal = CreateCounterModal;
-export default CreateCounter;
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  countersActions: bindActionCreators(actionCreators, dispatch)
+});
+const connector = connect(null, mapDispatchToProps);
+
+export default connector(CreateCounter);

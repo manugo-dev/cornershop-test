@@ -22,6 +22,8 @@ function CounterList({ search, list, countersActions }: Props) {
 
   const isNetworkError = problem && problem === NETWORK_ERROR;
   const isNotEmpty = counters && counters.length > 0;
+  const noSearchResults = !isNetworkError && !isLoading && !isNotEmpty && search;
+  const noCountersCreated = !isLoading && !isNotEmpty && !search;
 
   // TODO: Get it from API
   const quote = {
@@ -52,8 +54,8 @@ function CounterList({ search, list, countersActions }: Props) {
           </Button>
         </>
       )}
-      {!isNetworkError && !isLoading && !isNotEmpty && search && <p>{t('noResults')}</p>}
-      {!isLoading && !isNotEmpty && !search && (
+      {noSearchResults && <p>{t('noResults')}</p>}
+      {noCountersCreated && (
         <>
           <h1 className="title center">{t('noCounters')}</h1>
           <p className="text center m-bottom-2">“{quote.message}”</p>
@@ -69,9 +71,11 @@ function CounterList({ search, list, countersActions }: Props) {
 
 const mapStateToProps = (state: { [countersReducerName]: CountersState }): CountersState =>
   state[countersReducerName];
+
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   countersActions: bindActionCreators(actionCreators, dispatch)
 });
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export default connector(CounterList);
