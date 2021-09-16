@@ -3,8 +3,10 @@
   width: 30px;
 }
 
-.title {
+.title,
+.title:hover {
   flex: 1;
+  padding: 15px 20px;
 }
 
 .counter {

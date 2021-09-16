@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -12,9 +13,8 @@ import { getCounters } from 'services/CounterService';
 import { useRequest } from 'hooks/useRequest';
 import { Counter } from 'types/Counter';
 
-import { useEffect } from 'react';
-import styles from './styles.module.scss';
 import CounterElement from '../CounterElement';
+import styles from './styles.module.scss';
 
 interface Props extends ConnectedProps<typeof connector> {
   search?: string;
@@ -86,7 +86,12 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
         <div className="m-auto">
           <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
           <p className="text center m-bottom-5">{t('noConnection')}</p>
-          <Button color={ButtonColor.WHITE} onClick={() => doGetCounters(search)} disabled={loading}>
+          <Button
+            kind={ButtonKind.FLAT}
+            color={ButtonColor.WHITE}
+            onClick={() => doGetCounters(search)}
+            disabled={loading}
+          >
             {t('Global:retry')}
           </Button>
         </div>

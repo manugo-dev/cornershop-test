@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SearchIcon } from 'components/Icons';
+import { useDebouncedCallback } from 'use-debounce/lib';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
+import { SearchIcon } from 'components/Icons';
 
-import { useDebouncedCallback } from 'use-debounce/lib';
 import styles from './styles.module.scss';
 
 interface Props {
