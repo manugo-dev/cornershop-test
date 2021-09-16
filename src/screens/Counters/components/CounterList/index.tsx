@@ -1,27 +1,28 @@
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { connect, ConnectedProps } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { NETWORK_ERROR } from 'apisauce';
 import cn from 'classnames';
 
 import Button, { ButtonColor } from 'components/Button';
 import Loading from 'components/Loading';
-import { getCounters } from 'services/CounterService';
+import { actionCreators, CountersState } from 'redux/ducks/counters';
 
+import { Counter } from 'types/Counter';
+import { bindActionCreators, Dispatch } from 'redux';
 import styles from './styles.module.scss';
 
-interface Props {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface Props extends ConnectedProps<typeof connector> {
   search?: string;
 }
 
-function CounterList({ search }: Props) {
+function CounterList({ search, isLoading, list: counters, problem, updateCount, countersActions }: Props) {
   const { t } = useTranslation('CounterList');
-  const [updateCount, setUpdateCount] = useState(0);
-  const { data, isLoading, refetch } = useQuery(['counters', search], () => getCounters(search), {
-    onSuccess: () => setUpdateCount((state) => state + 1)
-  });
-  const isNetworkError = data?.problem && data.problem === NETWORK_ERROR;
-  const isNotEmpty = data?.data && data.data.length > 0;
+
+  console.log(isLoading, counters, problem, updateCount);
+
+  const isNetworkError = problem && problem === NETWORK_ERROR;
+  const isNotEmpty = counters && counters.length > 0;
 
   // TODO: Get it from API
   const quote = {
@@ -37,7 +38,11 @@ function CounterList({ search }: Props) {
         <>
           <h1 className="title center">{t('couldNotLoad')}</h1>
           <p className="text center m-bottom-2">{t('noConnection')}</p>
-          <Button color={ButtonColor.WHITE} onClick={() => refetch()} disabled={isLoading}>
+          <Button
+            color={ButtonColor.WHITE}
+            onClick={() => countersActions.getCounters(search)}
+            disabled={isLoading}
+          >
             {t('Global:retry')}
           </Button>
         </>
@@ -50,9 +55,19 @@ function CounterList({ search }: Props) {
           <span> — {quote.author}</span>
         </>
       )}
-      {!isLoading && isNotEmpty && data?.data?.map((counter) => <div key={counter.id}>{counter.title}</div>)}
+      {!isLoading &&
+        isNotEmpty &&
+        counters?.map((counter: Counter) => <div key={counter.id}>{counter.title}</div>)}
     </div>
   );
 }
 
-export default CounterList;
+const mapStateToProps = (state: any): CountersState => ({
+  ...state.counters.counters
+});
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  countersActions: bindActionCreators(actionCreators, dispatch)
+});
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export default connector(CounterList);

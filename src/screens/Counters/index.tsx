@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect, ConnectedProps } from 'react-redux';
 import cn from 'classnames';
 
 import useModal from 'hooks/useModal';
 import Button, { ButtonColor } from 'components/Button';
 import { NewIcon, OpenIcon, TrashBinIcon } from 'components/Icons';
 import CreateCounter from 'screens/CreateCounter';
+import { actionCreators } from 'redux/ducks/counters';
+
 import Search from './components/Search';
-
-import styles from './styles.module.scss';
 import CounterList from './components/CounterList';
+import styles from './styles.module.scss';
 
-function Counters() {
+interface Props extends ConnectedProps<typeof connector> {}
+
+function Counters({ countersActions }: Props) {
   const { isVisible: isModalVisible, hideModal, showModal } = useModal();
   const [search, setSearch] = useState<string | undefined>();
   const [searchActive, setSearchActive] = useState(false);
@@ -29,6 +34,10 @@ function Counters() {
   const onSearchBlur = () => {
     setSearchActive(false);
   };
+
+  useEffect(() => {
+    countersActions.getCounters(search);
+  }, [search]);
 
   return (
     <>
@@ -56,4 +65,9 @@ function Counters() {
   );
 }
 
-export default Counters;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  countersActions: bindActionCreators(actionCreators, dispatch)
+});
+const connector = connect(null, mapDispatchToProps);
+
+export default connector(Counters);

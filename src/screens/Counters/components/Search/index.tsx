@@ -19,7 +19,7 @@ interface Props {
 function Search({ className = '', onFocus, onChange, onBlur }: Props) {
   const { t } = useTranslation('Counters');
   const [value, setValue] = useState<string | undefined>();
-  const debouncedChange = useDebouncedCallback((search) => {
+  const debouncedChange = useDebouncedCallback((search?: string) => {
     onChange?.(search);
   }, 300);
 

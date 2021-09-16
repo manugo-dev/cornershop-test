@@ -1,23 +1,15 @@
-import Loading from 'components/Loading';
 import { Suspense } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ROUTES from './routes';
+import { Provider } from 'react-redux';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      retry: false
-    }
-  }
-});
+import Loading from 'components/Loading';
+import generateStore from 'redux/store';
+
+import ROUTES from './routes';
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={generateStore()}>
       <Suspense fallback={<Loading className="m-h-auto m-top-15" />}>
         <Router>
           <Switch>
@@ -27,7 +19,7 @@ function App() {
           </Switch>
         </Router>
       </Suspense>
-    </QueryClientProvider>
+    </Provider>
   );
 }
 
