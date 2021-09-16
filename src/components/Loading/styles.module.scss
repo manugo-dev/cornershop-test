@@ -1,17 +1,6 @@
 /* Activity indicator taken from
 https://tobiasahlin.com/spinkit/ */
 
-.spinner {
-  height: 114px;
-  position: relative;
-  width: 114px;
-
-  &.responsive {
-    height: 100%;
-    width: 100%;
-  }
-}
-
 .bouncer {
   animation: bounce 1800ms infinite ease-in-out;
   background-color: #ff9500;
@@ -30,6 +19,35 @@ https://tobiasahlin.com/spinkit/ */
 .bouncer:last-child {
   animation: bounce 1800ms infinite ease-in-out;
   animation-delay: -400ms;
+}
+
+.spinner {
+  height: 114px;
+  position: relative;
+  width: 114px;
+
+  &.responsive {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.fullscreen {
+    align-items: center;
+    background: var(--white-overflow);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  &.fullscreen .bouncer {
+    height: 114px;
+    width: 114px;
+  }
 }
 
 @keyframes bounce {

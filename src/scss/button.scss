@@ -79,7 +79,6 @@
 
 .clean,
 .clean:hover,
-.clean:disabled,
 .clean:hover::before {
   align-items: initial;
   background: none;
@@ -89,6 +88,10 @@
   height: auto;
   justify-content: initial;
   padding: 0;
+}
+
+.clean:disabled {
+  background-color: initial;
 }
 
 .clean > span {

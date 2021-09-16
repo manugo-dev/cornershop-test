@@ -10,7 +10,7 @@ import ROUTES from './routes';
 function App() {
   return (
     <Provider store={generateStore()}>
-      <Suspense fallback={<Loading className="m-h-auto m-top-15" />}>
+      <Suspense fallback={<Loading fullScreen className="m-h-auto m-top-15" />}>
         <Router>
           <Switch>
             {ROUTES.map((route) => (

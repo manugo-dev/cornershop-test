@@ -81,7 +81,7 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
           )}
         </div>
       )}
-      {loading && <Loading className="m-auto" />}
+      {loading && <Loading fullScreen />}
       {isNetworkError && (
         <div className="m-auto">
           <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
@@ -104,7 +104,7 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
           <span className="text center"> — {quote.author}</span>
         </div>
       )}
-      {!loading && isNotEmpty && (
+      {isNotEmpty && (
         <ul className={styles.list}>
           {counters?.map((counter: Counter) => (
             <li

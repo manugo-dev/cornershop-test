@@ -37,7 +37,7 @@ function CreateCounterModal({ isModalVisible, hideModal, countersActions, title 
         </Button>
       </Modal.Header>
       <Modal.Body>
-        {loading && <Loading />}
+        {loading && <Loading fullScreen />}
         <CreateCounter onSubmit={() => createCounter(title)} />
       </Modal.Body>
     </Modal>
