@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import useClickOutside from './useOutsideClick';
 
 const useModal = () => {
@@ -13,6 +13,16 @@ const useModal = () => {
   const showModal = useCallback(() => {
     setIsVisible(true);
   }, []);
+
+  useEffect(() => {
+    const onKeyup = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsVisible(false);
+    };
+    if (isVisible) {
+      window.addEventListener('keyup', onKeyup);
+    }
+    return () => window.removeEventListener('keyup', onKeyup);
+  }, [isVisible]);
 
   return {
     modalRef,

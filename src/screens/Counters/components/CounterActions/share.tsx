@@ -7,8 +7,8 @@ interface Props {
   disabled?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ShareCounter({ disabled, counters }: Props) {
-  console.log(counters);
   return (
     <>
       <Button color={ButtonColor.WHITE} disabled={disabled}>

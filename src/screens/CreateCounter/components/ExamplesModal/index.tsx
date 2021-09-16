@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 import Button, { ButtonKind } from 'components/Button';
 import { CloseIcon } from 'components/Icons';
 import Modal from 'components/Modal';
-import { useTranslation } from 'react-i18next';
 import { ModalProps } from 'types/Modal';
 
 function ExamplesModal({ modalRef, isModalVisible, hideModal }: ModalProps) {
@@ -15,7 +16,7 @@ function ExamplesModal({ modalRef, isModalVisible, hideModal }: ModalProps) {
         </Button>
         <Modal.Title>{t('examplesTitle')}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>examples modal</Modal.Body>
+      <Modal.Body>asd</Modal.Body>
     </Modal>
   );
 }
