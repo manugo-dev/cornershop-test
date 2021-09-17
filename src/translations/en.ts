@@ -2,6 +2,7 @@
 import i18next from 'i18next';
 
 i18next.addResources('en', 'Global', {
+  save: 'Save',
   retry: 'Retry',
   cancel: 'Cancel',
   delete: 'Delete',

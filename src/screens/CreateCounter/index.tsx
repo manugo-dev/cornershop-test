@@ -30,6 +30,8 @@ function CreateCounter({ onSubmit, showExamples, countersActions }: Props) {
   return (
     <form className={cn(styles.content)} onSubmit={handleSubmit}>
       <Input
+        required
+        id="createCounterInput"
         autoFocus
         label={t('name')}
         placeholder={DEFAULT_PLACEHOLDER}

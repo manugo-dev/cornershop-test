@@ -106,7 +106,18 @@ export default function countersReducer(state = INITIAL_DATA, action: Action) {
       const updateCounters = [...state.counters];
       const counterIndex = updateCounters.findIndex((counter) => counter.id === action.payload.id);
       updateCounters[counterIndex] = { ...updateCounters[counterIndex], ...action.payload };
-      return { ...state, counters: updateCounters };
+      console.log({
+        ...state,
+        ...(counterIndex !== -1
+          ? { counters: updateCounters }
+          : { counters: [...state.counters, action.payload] })
+      });
+      return {
+        ...state,
+        ...(counterIndex !== -1
+          ? { counters: updateCounters }
+          : { counters: [...state.counters, action.payload] })
+      };
     case ActionTypes.SELECT_COUNTER:
       const selectCounters = [...state.counters];
       const selectCounterIndex = selectCounters.findIndex((counter) => counter.id === action.payload);

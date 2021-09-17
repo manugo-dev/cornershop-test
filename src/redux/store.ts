@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
   [countersReducerName]: countersReducer
 });
 
-export default function generateStore() {
-  const store = createStore(rootReducer, devToolsEnhancer({}));
+export default function generateStore(initialState?: any) {
+  const store = createStore(rootReducer, initialState, devToolsEnhancer({}));
   return store;
 }
