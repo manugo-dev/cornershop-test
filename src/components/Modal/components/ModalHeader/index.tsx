@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import { HTMLProps, ReactNode } from 'react';
+import cn from 'classnames';
 
 import styles from '../../styles.module.scss';
 

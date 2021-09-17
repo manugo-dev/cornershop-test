@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks, @typescript-eslint/no-empty-function */
 import { renderHook, act } from '@testing-library/react-hooks';
 import { PROBLEM_CODE } from 'apisauce';
 
