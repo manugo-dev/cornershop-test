@@ -19,7 +19,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "testing-library"],
   "rules": {
     "quote-props": ["error", "as-needed"],
     "react/react-in-jsx-scope": "off",
@@ -38,6 +38,8 @@
         "endOfLine": "lf"
       }
     ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "@typescript-eslint/no-redeclare": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
