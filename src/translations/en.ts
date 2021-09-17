@@ -4,7 +4,9 @@ import i18next from 'i18next';
 i18next.addResources('en', 'Global', {
   retry: 'Retry',
   cancel: 'Cancel',
-  delete: 'Delete'
+  delete: 'Delete',
+  dismiss: 'Dismiss',
+  noConnection: 'The Internet connection appears to be offline.'
 });
 
 i18next.addResources('en', 'Welcome', {
@@ -22,14 +24,14 @@ i18next.addResources('en', 'CounterList', {
   noCounters: 'No counters yet',
   noResults: 'No results',
   couldNotLoad: 'Couldn’t load the counters',
-  noConnection: 'The Internet connection appears to be offline.',
   itemCount: '{{count}} item',
   itemCount_plural: '{{count}} items',
   itemSelected: '{{count}} selected',
   itemSelected_plural: '{{count}} selected',
   refreshCount: '{{count}} time',
   refreshCount_plural: '{{count}} times',
-  refreshing: 'Refreshing...'
+  refreshing: 'Refreshing...',
+  couldNotUpdate: 'Couldn’t update “{{title}}” to {{tryValue}}'
 });
 
 i18next.addResources('en', 'CreateCounter', {
@@ -42,6 +44,8 @@ i18next.addResources('en', 'CreateCounter', {
 });
 
 i18next.addResources('en', 'CounterActions', {
+  couldNotRemove: 'Couldn’t delete {{count}} counter',
+  couldNotRemove_plural: 'Couldn’t delete {{count}} counters',
   cannotUndone: 'This cannot be undone.',
   deleteCounter: 'Delete the {{count}} counter?',
   deleteCounter_plural: 'Delete {{count}} counters?',

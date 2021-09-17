@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { NETWORK_ERROR } from 'apisauce';
 
 import Alert from 'components/Alert';
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
@@ -21,12 +22,22 @@ interface Props extends ConnectedProps<typeof connector> {
 
 function DeleteCounter({ disabled, counters, countersActions }: Props) {
   const { t } = useTranslation('CounterActions');
-  const { isVisible: isAlertVisible, hideAlert, showAlert } = useAlert();
+  const {
+    isVisible: removeAlertVisible,
+    hideAlert: removeAlertHide,
+    showAlert: removeAlertShow
+  } = useAlert();
+  const { isVisible: errorAlertVisible, hideAlert: errorAlertHide, showAlert: errorAlertShow } = useAlert();
 
   const [, loading, , removeCounter] = useLazyRequest({
     request: deleteCounter,
     withPostSuccess: (counter) => {
       countersActions.deleteCounter(counter);
+    },
+    withPostFailure: (error) => {
+      if (error.problem === NETWORK_ERROR) {
+        errorAlertShow();
+      }
     }
   });
 
@@ -36,7 +47,7 @@ function DeleteCounter({ disabled, counters, countersActions }: Props) {
         removeCounter(counter.id);
       }, 200);
     });
-    hideAlert();
+    removeAlertHide();
   };
 
   return (
@@ -45,12 +56,12 @@ function DeleteCounter({ disabled, counters, countersActions }: Props) {
       <Button
         color={ButtonColor.DANGER}
         className="m-right-2"
-        onClick={() => showAlert()}
+        onClick={() => removeAlertShow()}
         disabled={disabled}
       >
         <TrashBinIcon fill="var(--destructive-red)" />
       </Button>
-      <Alert isVisible={isAlertVisible}>
+      <Alert isVisible={removeAlertVisible}>
         <Alert.Title>{t('deleteCounter', { count: counters.length })}</Alert.Title>
         <Alert.Message>
           <span>{t('cannotUndone')}</span>
@@ -63,11 +74,25 @@ function DeleteCounter({ disabled, counters, countersActions }: Props) {
           </ul>
         </Alert.Message>
         <Alert.Actions>
-          <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={hideAlert}>
+          <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={removeAlertHide}>
             {t('Global:cancel')}
           </Button>
           <Button kind={ButtonKind.RAISED} color={ButtonColor.DANGER} onClick={() => removeAll(counters)}>
             {t('Global:delete')}
+          </Button>
+        </Alert.Actions>
+      </Alert>
+      <Alert isVisible={errorAlertVisible}>
+        <Alert.Title>{t('couldNotRemove', { count: counters.length })}</Alert.Title>
+        <Alert.Message>
+          <span>{t('Global:noConnection')}</span>
+        </Alert.Message>
+        <Alert.Actions>
+          <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={() => removeAll(counters)}>
+            {t('Global:retry')}
+          </Button>
+          <Button kind={ButtonKind.RAISED} color={ButtonColor.PRIMARY} onClick={errorAlertHide}>
+            {t('Global:dismiss')}
           </Button>
         </Alert.Actions>
       </Alert>

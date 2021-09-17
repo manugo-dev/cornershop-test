@@ -1,11 +1,16 @@
+import { useState } from 'react';
+import { NETWORK_ERROR } from 'apisauce';
+import { useTranslation } from 'react-i18next';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 import cn from 'classnames';
 
-import Button, { ButtonKind } from 'components/Button';
+import Alert from 'components/Alert';
+import Button, { ButtonColor, ButtonKind } from 'components/Button';
 import Loading from 'components/Loading';
 import { DecrementIcon, IncrementIcon } from 'components/Icons';
-import { useLazyRequest } from 'hooks/useRequest';
+import useAlert from 'hooks/useAlert';
+import { ErrorType, useLazyRequest } from 'hooks/useRequest';
 import { actionCreators } from 'redux/ducks/counters';
 import { decrementCounter, incrementCounter } from 'services/CounterService';
 import { Counter } from 'types/Counter';
@@ -14,22 +19,53 @@ import styles from './styles.module.scss';
 
 interface Props extends Counter, ConnectedProps<typeof connector> {}
 
+enum UpdateAction {
+  INCREMENT,
+  DECREMENT
+}
+
 function CounterElement({ id, title, count, countersActions }: Props) {
+  const { t } = useTranslation('CounterList');
+  const { isVisible: isAlertVisible, hideAlert, showAlert } = useAlert();
+  const [action, setAction] = useState<UpdateAction>();
+
+  const showUpdateError = (error: ErrorType<Counter>) => {
+    if (error.problem === NETWORK_ERROR) {
+      showAlert();
+    }
+  };
+
   const [, loadingIncrement, , doIncrementCounter] = useLazyRequest({
     request: incrementCounter,
     withPostSuccess: (counter) => {
       countersActions.updateCounter(counter);
-    }
+      if (isAlertVisible) {
+        hideAlert();
+      }
+    },
+    withPostFailure: (error) => showUpdateError(error)
   });
 
   const [, loadingDecrement, , doDecrementCounter] = useLazyRequest({
     request: decrementCounter,
     withPostSuccess: (counter) => {
       countersActions.updateCounter(counter);
-    }
+      if (isAlertVisible) {
+        hideAlert();
+      }
+    },
+    withPostFailure: (error) => showUpdateError(error)
   });
 
   const isLoading = loadingIncrement || loadingDecrement;
+  const tryValue = action === UpdateAction.INCREMENT ? count + 1 : count - 1;
+  const handleRetry = () => {
+    if (action === UpdateAction.INCREMENT) {
+      doIncrementCounter(id);
+    } else {
+      doDecrementCounter(id);
+    }
+  };
 
   return (
     <>
@@ -44,7 +80,10 @@ function CounterElement({ id, title, count, countersActions }: Props) {
         <Button
           kind={ButtonKind.CLEAN}
           className={cn('m-right-2', styles.button)}
-          onClick={() => doDecrementCounter(id)}
+          onClick={() => {
+            setAction(UpdateAction.DECREMENT);
+            doDecrementCounter(id);
+          }}
           disabled={count <= 0 || isLoading}
         >
           <DecrementIcon fill={count <= 0 || isLoading ? 'var(--grey)' : 'var(--app-tint)'} />
@@ -55,12 +94,28 @@ function CounterElement({ id, title, count, countersActions }: Props) {
         <Button
           kind={ButtonKind.CLEAN}
           className={cn('m-right-2', styles.button)}
-          onClick={() => doIncrementCounter(id)}
+          onClick={() => {
+            setAction(UpdateAction.INCREMENT);
+            doIncrementCounter(id);
+          }}
           disabled={isLoading}
         >
           <IncrementIcon fill={isLoading ? 'var(--grey)' : 'var(--app-tint)'} />
         </Button>
       </div>
+
+      <Alert isVisible={isAlertVisible}>
+        <Alert.Title>{t('couldNotUpdate', { title, tryValue })}</Alert.Title>
+        <Alert.Message>{t('Global:noConnection')}</Alert.Message>
+        <Alert.Actions>
+          <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={handleRetry}>
+            {t('Global:retry')}
+          </Button>
+          <Button kind={ButtonKind.RAISED} color={ButtonColor.PRIMARY} onClick={hideAlert}>
+            {t('Global:dismiss')}
+          </Button>
+        </Alert.Actions>
+      </Alert>
     </>
   );
 }

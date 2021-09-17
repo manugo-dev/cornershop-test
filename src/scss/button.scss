@@ -143,6 +143,11 @@
   color: var(--black);
 }
 
+.primary {
+  background-color: var(--white);
+  color: var(--app-tint);
+}
+
 .silver {
   background-color: var(--light-silver);
   border-color: var(--silver);

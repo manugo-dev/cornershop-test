@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import Alert from 'components/Alert';
 import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
@@ -86,17 +87,14 @@ function Cookbook() {
         <Button color={ButtonColor.DANGER}>Danger</Button>
         <Button color={ButtonColor.WHITE}>White</Button>
         <hr />
-
         <p>Size variants</p>
         <Button>Regular</Button>
         <Button size={ButtonSize.BIG}>Big</Button>
         <hr />
-
         <p>Kind variants</p>
         <Button kind={ButtonKind.FLAT}>Flat</Button>
         <Button>Regular</Button>
         <Button kind={ButtonKind.RAISED}>Raised</Button>
-
         <p>With icons</p>
         <div style={{ display: 'flex' }}>
           <Button>

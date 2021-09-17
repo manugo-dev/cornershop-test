@@ -55,7 +55,6 @@ function SharePopup({ popupRef, counters }: PopupProps) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ShareCounter({ disabled, counters }: Props) {
   const [open, setOpen] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);

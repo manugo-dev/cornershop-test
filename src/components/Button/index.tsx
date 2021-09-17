@@ -17,7 +17,8 @@ export enum ButtonColor {
   REGULAR = 'regular',
   DANGER = 'danger',
   WHITE = 'white',
-  SILVER = 'silver'
+  SILVER = 'silver',
+  PRIMARY = 'primary'
 }
 
 const ButtonSizeClasses = {
@@ -36,7 +37,8 @@ const ButtonColorClasses = {
   [ButtonColor.REGULAR]: '',
   [ButtonColor.DANGER]: 'danger',
   [ButtonColor.WHITE]: 'white',
-  [ButtonColor.SILVER]: 'silver'
+  [ButtonColor.SILVER]: 'silver',
+  [ButtonColor.PRIMARY]: 'primary'
 };
 
 export type ButtonType = JSX.IntrinsicElements['button']['type'];

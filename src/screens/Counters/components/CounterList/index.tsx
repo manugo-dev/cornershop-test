@@ -85,10 +85,10 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
       {isNetworkError && (
         <div className="m-auto">
           <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
-          <p className="text center m-bottom-5">{t('noConnection')}</p>
+          <p className="text center m-bottom-5">{t('Global:noConnection')}</p>
           <Button
             kind={ButtonKind.FLAT}
-            color={ButtonColor.WHITE}
+            color={ButtonColor.PRIMARY}
             onClick={() => doGetCounters(search)}
             disabled={loading}
           >
