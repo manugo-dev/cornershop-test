@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
+import Search from 'components/Search';
 import useModal from 'hooks/useModal';
 import CreateCounter from 'screens/CreateCounter';
 
-import Search from './components/Search';
 import CounterList from './components/CounterList';
 import styles from './styles.module.scss';
 import CounterActions from './components/CounterActions';

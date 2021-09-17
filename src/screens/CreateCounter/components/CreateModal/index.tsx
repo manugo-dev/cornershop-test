@@ -37,12 +37,12 @@ function CreateCounterModal({
   return (
     <Modal modalRef={modalRef} isVisible={isModalVisible}>
       <Modal.Header className="row middle">
-        <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
+        <Button aria-label="close" className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
           <CloseIcon fill="var(--white)" />
         </Button>
         <Modal.Title>{t('createTitle')}</Modal.Title>
-        <Button className="m-left-auto" onClick={() => createCounter(title)}>
-          Save
+        <Button className="m-left-auto" onClick={() => createCounter(title)} disabled={!title}>
+          {t('Global:save')}
         </Button>
       </Modal.Header>
       <Modal.Body>

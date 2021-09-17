@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 const TRANSITION_TIMEOUT = 295; // ms
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  modalRef: React.RefObject<HTMLDivElement>;
+  modalRef?: React.RefObject<HTMLDivElement>;
   children: ReactNode;
   className?: string;
   isVisible?: boolean;

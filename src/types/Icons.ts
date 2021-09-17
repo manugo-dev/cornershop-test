@@ -1,4 +1,3 @@
-export interface IconsProps {
-  className?: string;
+export interface IconsProps extends Partial<SVGElement> {
   fill?: string;
 }
