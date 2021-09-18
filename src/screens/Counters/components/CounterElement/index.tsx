@@ -49,7 +49,6 @@ function CounterElement({ id, title, count, countersActions }: Props) {
   const [, loadingDecrement, , doDecrementCounter] = useLazyRequest({
     request: decrementCounter,
     withPostSuccess: (counter) => {
-      console.log('running', counter);
       countersActions.updateCounter(counter);
       if (isAlertVisible) {
         hideAlert();
