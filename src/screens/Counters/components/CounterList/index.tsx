@@ -48,8 +48,8 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
 
   const isNetworkError = error?.problem && error.problem === NETWORK_ERROR;
   const isNotEmpty = counters && counters.length > 0;
-  const noSearchResults = !isNetworkError && !loading && !isNotEmpty && search;
-  const noCountersCreated = !loading && !isNetworkError && !isNotEmpty && !search;
+  const noSearchResults = !error && !loading && !isNotEmpty && search;
+  const noCountersCreated = !loading && !error && !isNotEmpty && !search;
 
   // TODO: Get it from API
   const quote = {
@@ -75,18 +75,26 @@ function CounterList({ search, selected, counters, fetchCount, countersActions }
               <span className="text primary">{t('refreshing')}</span>
             </div>
           ) : (
-            <Button kind={ButtonKind.CLEAN} onClick={() => doGetCounters(search)} disabled={loading}>
+            <Button
+              aria-label="refresh"
+              kind={ButtonKind.CLEAN}
+              onClick={() => doGetCounters(search)}
+              disabled={loading}
+            >
               <RefreshIcon className="m-bottom-1" />
             </Button>
           )}
         </div>
       )}
       {loading && <Loading fullScreen />}
-      {isNetworkError && (
+      {!isNotEmpty && error && (
         <div className="m-auto">
           <h1 className="title center m-bottom-1">{t('couldNotLoad')}</h1>
-          <p className="text center m-bottom-5">{t('Global:noConnection')}</p>
+          <p className="text center m-bottom-5">
+            {t(isNetworkError ? 'Global:noConnection' : 'Global:serverError')}
+          </p>
           <Button
+            aria-label="retry"
             kind={ButtonKind.FLAT}
             color={ButtonColor.PRIMARY}
             onClick={() => doGetCounters(search)}

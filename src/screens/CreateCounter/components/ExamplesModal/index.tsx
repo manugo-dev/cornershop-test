@@ -37,7 +37,7 @@ function ExamplesModal({ modalRef, isModalVisible, hideModal, countersActions }:
   return (
     <Modal modalRef={modalRef} isVisible={isModalVisible}>
       <Modal.Header className="row middle">
-        <Button className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
+        <Button aria-label="close" className="m-right-2" kind={ButtonKind.CIRCLE} onClick={() => hideModal()}>
           <CloseIcon fill="var(--white)" />
         </Button>
         <Modal.Title>{t('examplesTitle')}</Modal.Title>

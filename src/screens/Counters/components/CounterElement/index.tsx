@@ -49,6 +49,7 @@ function CounterElement({ id, title, count, countersActions }: Props) {
   const [, loadingDecrement, , doDecrementCounter] = useLazyRequest({
     request: decrementCounter,
     withPostSuccess: (counter) => {
+      console.log('running', counter);
       countersActions.updateCounter(counter);
       if (isAlertVisible) {
         hideAlert();
@@ -70,6 +71,7 @@ function CounterElement({ id, title, count, countersActions }: Props) {
   return (
     <>
       <Button
+        aria-label="title"
         kind={ButtonKind.CLEAN}
         className={cn('m-right-5', styles.title)}
         onClick={() => countersActions.selectCounter(id)}
@@ -78,6 +80,7 @@ function CounterElement({ id, title, count, countersActions }: Props) {
       </Button>
       <div className={cn('row middle m-left-auto', styles.actions)}>
         <Button
+          aria-label="decrement"
           kind={ButtonKind.CLEAN}
           className={cn('m-right-2', styles.button)}
           onClick={() => {
@@ -88,10 +91,11 @@ function CounterElement({ id, title, count, countersActions }: Props) {
         >
           <DecrementIcon fill={count <= 0 || isLoading ? 'var(--grey)' : 'var(--app-tint)'} />
         </Button>
-        <span className={cn('text m-right-2', { grey: count <= 0 }, styles.counter)}>
+        <span aria-label="count" className={cn('text m-right-2', { grey: count <= 0 }, styles.counter)}>
           {isLoading ? <Loading className={cn('m-auto', styles.loading)} /> : count}
         </span>
         <Button
+          aria-label="increment"
           kind={ButtonKind.CLEAN}
           className={cn('m-right-2', styles.button)}
           onClick={() => {
@@ -108,10 +112,15 @@ function CounterElement({ id, title, count, countersActions }: Props) {
         <Alert.Title>{t('couldNotUpdate', { title, tryValue })}</Alert.Title>
         <Alert.Message>{t('Global:noConnection')}</Alert.Message>
         <Alert.Actions>
-          <Button className="m-right-5" kind={ButtonKind.RAISED} onClick={handleRetry}>
+          <Button aria-label="retry" className="m-right-5" kind={ButtonKind.RAISED} onClick={handleRetry}>
             {t('Global:retry')}
           </Button>
-          <Button kind={ButtonKind.RAISED} color={ButtonColor.PRIMARY} onClick={hideAlert}>
+          <Button
+            aria-label="cancel"
+            kind={ButtonKind.RAISED}
+            color={ButtonColor.PRIMARY}
+            onClick={hideAlert}
+          >
             {t('Global:dismiss')}
           </Button>
         </Alert.Actions>
