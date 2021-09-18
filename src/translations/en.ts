@@ -7,7 +7,8 @@ i18next.addResources('en', 'Global', {
   cancel: 'Cancel',
   delete: 'Delete',
   dismiss: 'Dismiss',
-  noConnection: 'The Internet connection appears to be offline.'
+  noConnection: 'The Internet connection appears to be offline.',
+  serverError: 'Something went wrong.'
 });
 
 i18next.addResources('en', 'Welcome', {
