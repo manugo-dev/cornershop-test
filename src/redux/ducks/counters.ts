@@ -106,12 +106,6 @@ export default function countersReducer(state = INITIAL_DATA, action: Action) {
       const updateCounters = [...state.counters];
       const counterIndex = updateCounters.findIndex((counter) => counter.id === action.payload.id);
       updateCounters[counterIndex] = { ...updateCounters[counterIndex], ...action.payload };
-      console.log({
-        ...state,
-        ...(counterIndex !== -1
-          ? { counters: updateCounters }
-          : { counters: [...state.counters, action.payload] })
-      });
       return {
         ...state,
         ...(counterIndex !== -1
