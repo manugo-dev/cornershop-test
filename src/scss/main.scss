@@ -1,0 +1,91 @@
+@import 'variables';
+@import 'layout';
+@import 'margins';
+@import 'typography';
+@import 'button';
+@import 'fonts/AvenirNext';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--white);
+  color: var(--dark-black);
+  font-family: var(--main-font);
+  font-size: 17px;
+  font-weight: 400;
+  height: 100%;
+  line-height: var(--line-height);
+}
+
+.app {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--main-font);
+}
+
+/* Transition */
+.cs-fade-transition {
+  transition: opacity 195ms ease-in-out;
+}
+
+.cs-fade-exited,
+.cs-fade-exiting,
+.cs-fade-entering {
+  opacity: 0;
+}
+
+.cs-fade-entered {
+  opacity: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--light-silver);
+  border: 2px solid var(--white);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border: 2px solid var(--white);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var(--silver);
+  border: 1px solid var(--white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--app-tint);
+  border: 1px solid var(--white);
+  cursor: pointer;
+}

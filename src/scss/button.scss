@@ -1,0 +1,160 @@
+.button {
+  align-items: center;
+  background-color: var(--app-tint);
+  border: var(--with-border);
+  border-radius: var(--with-radius);
+  box-shadow: var(--with-shadow);
+  color: var(--white);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: inherit;
+  height: 40px;
+  justify-content: center;
+  padding: 8px 24px;
+  position: relative;
+  text-decoration: initial;
+  transition: 195ms box-shadow ease-in;
+
+  &::before {
+    border-radius: inherit;
+    bottom: -1px;
+    box-shadow: var(--with-shadow--hover);
+    content: '';
+    left: -1px;
+    pointer-events: none;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    transition: 195ms background-color ease-in;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    background-color: var(--alpha-005);
+  }
+
+  > span {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: var(--light-grey);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.link,
+.link:hover,
+.link:hover::before {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--black);
+  height: auto;
+  padding: 0 3px;
+  text-decoration: underline;
+}
+
+.link:hover {
+  box-shadow: none;
+  color: var(--app-tint);
+}
+
+/* Size */
+.big {
+  height: 48px;
+  padding: 12px 18px;
+}
+
+/* Kind */
+.clean::before {
+  display: none;
+}
+
+.clean,
+.clean:hover,
+.clean:hover::before {
+  align-items: initial;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--black);
+  height: auto;
+  justify-content: initial;
+  padding: 0;
+}
+
+.clean:disabled {
+  background-color: initial;
+}
+
+.clean > span {
+  align-items: initial;
+  justify-content: initial;
+  text-align: initial;
+}
+
+.circle {
+  background: var(--light-grey);
+  border-radius: 100%;
+  color: var(--white);
+  height: 28px;
+  padding: 0;
+  width: 28px;
+}
+
+.raised {
+  border-color: transparent;
+  box-shadow: var(--with-shadow--raised);
+}
+
+.raised:hover {
+  box-shadow: var(--with-shadow--raised--hover);
+}
+
+.flat {
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.flat.primary,
+.raised.primary {
+  color: var(--app-tint);
+}
+
+/* Color */
+.danger {
+  background-color: var(--white);
+  color: var(--destructive-red);
+}
+
+.white {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.primary {
+  background-color: var(--white);
+  color: var(--app-tint);
+}
+
+.silver {
+  background-color: var(--light-silver);
+  border-color: var(--silver);
+  color: var(--black);
+}
+
+.rounded {
+  border-radius: 20px;
+  box-shadow: none;
+}

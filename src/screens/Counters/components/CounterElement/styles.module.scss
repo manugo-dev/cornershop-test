@@ -1,0 +1,20 @@
+.loading {
+  height: 30px;
+  width: 30px;
+}
+
+.title,
+.title:hover {
+  flex: 1;
+  padding: 15px 20px;
+}
+
+.counter {
+  min-width: 50px;
+  text-align: center;
+}
+
+.button,
+.button:hover {
+  padding: 10px 5px;
+}

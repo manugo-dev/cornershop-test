@@ -1,0 +1,45 @@
+:root {
+  /* Sizes */
+  --header-height: 70px;
+  --footer-height: 60px;
+  --page-width: 570px;
+  --search-width: 380px;
+
+  /* Colors */
+  --app-tint: rgb(255, 149, 0);
+  --alpha-app-tint: rgb(255, 149, 0, 0.2);
+  --destructive-red: rgb(255, 59, 48);
+  --alpha-destructive-red: rgb(255, 59, 48, 0.2);
+  --white: rgb(255, 255, 255);
+  --dark-black: rgb(43, 43, 43);
+  --black: rgb(74, 74, 74);
+  --grey: rgb(136, 139, 144);
+  --light-grey: rgb(196, 196, 196);
+  --silver: rgb(220, 220, 223);
+  --light-silver: rgb(236, 236, 236);
+  --white-overflow: rgba(255, 255, 255, 0.8);
+  --alpha-005: rgba(0, 0, 0, 0.05);
+  --alpha-01: rgba(0, 0, 0, 0.1);
+  --alpha-015: rgba(0, 0, 0, 0.15);
+  --alpha-05: rgba(0, 0, 0, 0.5);
+
+  /* Fonts */
+  --main-font: 'Avenir Next', 'Futura', 'Lucida Grande', helvetica, arial, verdana, sans-serif;
+  --line-height: 1.38636;
+
+  /* Borders */
+  --with-border: 1px solid var(--alpha-01);
+  --with-border--dark: 1px solid var(--alpha-015);
+  --with-radius--small: 6px;
+  --with-radius: 8px;
+  --with-radius--large: 10px;
+
+  /* Shadows */
+  --with-shadow: 0 2px 8px 0 var(--alpha-005);
+  --with-shadow--hover: 0 2px 8px 0 var(--alpha-005), 0 4px 16px 0 var(--alpha-005),
+    0 8px 32px 0 var(--alpha-005);
+  --with-shadow--raised: 0 2px 8px 0 var(--alpha-015);
+  --with-shadow--raised--hover: 0 2px 8px 0 var(--alpha-015), 0 4px 16px 0 var(--alpha-015),
+    0 8px 32px 0 var(--alpha-015);
+  --with-shadow--alert: 0 24px 38px 0 var(--alpha-015);
+}

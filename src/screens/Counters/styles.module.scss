@@ -1,0 +1,50 @@
+.header {
+  background: var(--white);
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+.search {
+  width: var(--search-width);
+}
+
+.content {
+  margin: auto;
+  max-width: 100%;
+  min-height: 100%;
+  padding: 80px 10px;
+  width: var(--page-width);
+}
+
+.actions {
+  margin: auto;
+  max-width: 100%;
+  width: var(--page-width);
+}
+
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--alpha-01);
+  bottom: 0;
+  height: var(--footer-height);
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.overflow {
+  &::before {
+    background: var(--white-overflow);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}

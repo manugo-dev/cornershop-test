@@ -1,0 +1,16 @@
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.counters {
+  padding: 0 15px;
+}
+
+.element {
+  border-radius: 5px;
+}
+
+.selected {
+  background: var(--alpha-app-tint);
+}
