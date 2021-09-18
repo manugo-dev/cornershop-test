@@ -4,7 +4,7 @@ export enum StatusCodes {
   UNAUTHORIZED = 401
 }
 
-const DEFAULT_BASE_URL = '/api/v1/s';
+const DEFAULT_BASE_URL = '/api/v1';
 export const BASE_URL =
   process.env.NODE_ENV === 'test' ? 'http://app' : process.env.REACT_APP_API_BASE_URL || DEFAULT_BASE_URL;
 
