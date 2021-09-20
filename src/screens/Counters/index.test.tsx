@@ -2,9 +2,9 @@ import { screen, render, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { Provider } from 'react-redux';
-import generateStore from 'redux/store';
 
 import { BASE_URL } from 'config/api';
+import generateStore from 'redux/store';
 
 import Counters from './index';
 

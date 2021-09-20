@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect, ConnectedProps } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { NETWORK_ERROR } from 'apisauce';
 import cn from 'classnames';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { connect, ConnectedProps } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
-import Loading from 'components/Loading';
 import RefreshIcon from 'components/Icons/RefreshIcon';
+import Loading from 'components/Loading';
+import { useRequest } from 'hooks/useRequest';
 import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
 import { getCounters } from 'services/CounterService';
-import { useRequest } from 'hooks/useRequest';
 import { Counter } from 'types/Counter';
 
 import CounterElement from '../CounterElement';
+
 import styles from './styles.module.scss';
 
 interface Props extends ConnectedProps<typeof connector> {

@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import cn from 'classnames';
+import { useState } from 'react';
 
 import Search from 'components/Search';
 import useModal from 'hooks/useModal';
-import CreateCounter from 'screens/CreateCounter';
+import CreateCounterModal from 'screens/CreateCounter/components/CreateModal';
+import ExamplesModal from 'screens/CreateCounter/components/ExamplesModal';
 
+import CounterActions from './components/CounterActions';
 import CounterList from './components/CounterList';
 import styles from './styles.module.scss';
-import CounterActions from './components/CounterActions';
 
 function Counters() {
   const [search, setSearch] = useState<string | undefined>();
@@ -57,13 +58,13 @@ function Counters() {
       </header>
       <section className={cn('column', styles.content, { [styles.overflow]: searchActive })}>
         <CounterList search={search} />
-        <CreateCounter.Modal
+        <CreateCounterModal
           modalRef={createModalRef}
           isModalVisible={isCreateModalVisible}
           hideModal={hideCreateModal}
           showExamples={openExamplesModal}
         />
-        <CreateCounter.ExamplesModal
+        <ExamplesModal
           modalRef={examplesModalRef}
           isModalVisible={isExamplesModalVisible}
           hideModal={hideExamplesModal}

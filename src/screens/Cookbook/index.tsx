@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import Alert from 'components/Alert';
 import Button, { ButtonColor, ButtonKind, ButtonSize } from 'components/Button';
-import Input from 'components/Input';
-import Loading from 'components/Loading';
-import Modal from 'components/Modal';
 import {
   CloseIcon,
   DecrementIcon,
@@ -15,6 +12,9 @@ import {
   SearchIcon,
   TrashBinIcon
 } from 'components/Icons';
+import Input from 'components/Input';
+import Loading from 'components/Loading';
+import Modal from 'components/Modal';
 import useAlert from 'hooks/useAlert';
 import useModal from 'hooks/useModal';
 

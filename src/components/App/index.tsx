@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Loading from 'components/Loading';
 import generateStore from 'redux/store';

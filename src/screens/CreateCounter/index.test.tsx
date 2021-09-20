@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { Middleware, Dispatch, AnyAction } from 'redux';
 import configureStore from 'redux-mock-store';
+
 import { ActionTypes, INITIAL_DATA, NAME as countersReducer } from 'redux/ducks/counters';
 
 import CreateCounterForm from './index';

@@ -1,12 +1,12 @@
+import { NETWORK_ERROR } from 'apisauce';
 import { useTranslation } from 'react-i18next';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { NETWORK_ERROR } from 'apisauce';
 
 import Alert from 'components/Alert';
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
-import Loading from 'components/Loading';
 import { TrashBinIcon } from 'components/Icons';
+import Loading from 'components/Loading';
 import useAlert from 'hooks/useAlert';
 import { useLazyRequest } from 'hooks/useRequest';
 import { actionCreators } from 'redux/ducks/counters';

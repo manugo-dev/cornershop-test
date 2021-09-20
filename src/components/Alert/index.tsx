@@ -1,12 +1,11 @@
+import cn from 'classnames';
 import { HTMLProps, ReactNode, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import cn from 'classnames';
 import Transition from 'react-transition-group/Transition';
 
 import AlertActions from './components/AlertActions';
 import AlertMessage from './components/AlertMessage';
 import AlertTitle from './components/AlertTitle';
-
 import styles from './styles.module.scss';
 
 const TRANSITION_TIMEOUT = 195; // ms

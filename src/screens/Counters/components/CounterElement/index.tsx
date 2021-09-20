@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import { NETWORK_ERROR } from 'apisauce';
-import { useTranslation } from 'react-i18next';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect, ConnectedProps } from 'react-redux';
 import cn from 'classnames';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { connect, ConnectedProps } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import Alert from 'components/Alert';
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
-import Loading from 'components/Loading';
 import { DecrementIcon, IncrementIcon } from 'components/Icons';
+import Loading from 'components/Loading';
 import useAlert from 'hooks/useAlert';
 import { ErrorType, useLazyRequest } from 'hooks/useRequest';
 import { actionCreators } from 'redux/ducks/counters';

@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useDebouncedCallback } from 'use-debounce/lib';
 
 import Button from 'components/Button';
-import Input from 'components/Input';
 import { SearchIcon } from 'components/Icons';
+import Input from 'components/Input';
 
 import styles from './styles.module.scss';
 

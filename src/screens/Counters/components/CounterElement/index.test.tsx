@@ -1,11 +1,11 @@
 import { screen, render } from '@testing-library/react';
-import { Provider } from 'react-redux';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { Provider } from 'react-redux';
 
 import { BASE_URL } from 'config/api';
-import generateStore from 'redux/store';
 import { INITIAL_DATA, NAME } from 'redux/ducks/counters';
+import generateStore from 'redux/store';
 
 import CounterElement from './index';
 
