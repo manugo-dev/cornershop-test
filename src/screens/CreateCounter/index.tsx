@@ -1,14 +1,12 @@
+import cn from 'classnames';
 import { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import cn from 'classnames';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
 import { actionCreators } from 'redux/ducks/counters';
-import CreateCounterModal from './components/CreateModal';
-import ExamplesModal from './components/ExamplesModal';
 
 import styles from './styles.module.scss';
 
@@ -47,9 +45,6 @@ function CreateCounter({ onSubmit, showExamples, countersActions }: Props) {
     </form>
   );
 }
-
-CreateCounter.Modal = CreateCounterModal;
-CreateCounter.ExamplesModal = ExamplesModal;
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   countersActions: bindActionCreators(actionCreators, dispatch)

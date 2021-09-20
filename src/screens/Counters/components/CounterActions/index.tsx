@@ -1,13 +1,13 @@
+import cn from 'classnames';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import cn from 'classnames';
 
 import Button from 'components/Button';
 import { NewIcon } from 'components/Icons';
 import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
 
-import ShareCounter from './share';
 import DeleteCounter from './delete';
+import ShareCounter from './share';
 import styles from './styles.module.scss';
 
 interface Props extends ConnectedProps<typeof connector> {

@@ -1,13 +1,13 @@
 import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 import { Provider } from 'react-redux';
 import { Middleware, Dispatch, AnyAction } from 'redux';
 import configureStore from 'redux-mock-store';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 
-import { ActionTypes, INITIAL_DATA, NAME as countersReducer } from 'redux/ducks/counters';
 import { BASE_URL } from 'config/api';
+import { ActionTypes, INITIAL_DATA, NAME as countersReducer } from 'redux/ducks/counters';
 
 import CreateModal from './index';
 

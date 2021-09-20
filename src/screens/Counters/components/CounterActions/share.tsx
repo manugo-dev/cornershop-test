@@ -1,6 +1,6 @@
+import cn from 'classnames';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import cn from 'classnames';
 
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
 import { OpenIcon } from 'components/Icons';

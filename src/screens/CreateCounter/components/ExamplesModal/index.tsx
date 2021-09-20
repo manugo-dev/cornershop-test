@@ -1,20 +1,21 @@
+import cn from 'classnames';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { useTranslation } from 'react-i18next';
-import cn from 'classnames';
 
 import Button, { ButtonColor, ButtonKind } from 'components/Button';
 import { CloseIcon } from 'components/Icons';
-import Modal from 'components/Modal';
 import Loading from 'components/Loading';
+import Modal from 'components/Modal';
 import { useLazyRequest } from 'hooks/useRequest';
 import { actionCreators } from 'redux/ducks/counters';
 import { addCounter } from 'services/CounterService';
 import { ModalProps } from 'types/Modal';
 
-import MOCKS from './mock';
 import styles from '../../styles.module.scss';
+
+import MOCKS from './mock';
 
 interface ExamplesModalProps extends ModalProps, ConnectedProps<typeof connector> {}
 

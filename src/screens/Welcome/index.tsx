@@ -1,9 +1,9 @@
+import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
 
-import paths from 'components/App/paths';
 import { ReactComponent as Logo } from 'assets/logo.svg';
+import paths from 'components/App/paths';
 
 import styles from './styles.module.scss';
 

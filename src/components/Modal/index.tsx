@@ -1,12 +1,11 @@
+import cn from 'classnames';
 import { HTMLProps, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import cn from 'classnames';
 import Transition from 'react-transition-group/Transition';
 
 import ModalBody from './components/ModalBody';
 import ModalHeader from './components/ModalHeader';
 import ModalTitle from './components/ModalTitle';
-
 import styles from './styles.module.scss';
 
 const TRANSITION_TIMEOUT = 295; // ms

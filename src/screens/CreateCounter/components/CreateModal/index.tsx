@@ -1,16 +1,16 @@
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect, ConnectedProps } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { connect, ConnectedProps } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import Button, { ButtonKind } from 'components/Button';
 import { CloseIcon } from 'components/Icons';
-import Modal from 'components/Modal';
 import Loading from 'components/Loading';
+import Modal from 'components/Modal';
 import { useLazyRequest } from 'hooks/useRequest';
-import { ModalProps } from 'types/Modal';
 import { actionCreators, CountersState, NAME as countersReducerName } from 'redux/ducks/counters';
 import CreateCounter from 'screens/CreateCounter';
 import { addCounter } from 'services/CounterService';
+import { ModalProps } from 'types/Modal';
 
 interface CreateCounterModalProps extends ModalProps, ConnectedProps<typeof connector> {
   showExamples: () => void;
